@@ -1,4 +1,3 @@
-import { Divider } from '@material-ui/core';
 import {
   Grid,
   Paper,
@@ -8,7 +7,6 @@ import {
   FormControlLabel,
   FormGroup,
   Button,
-  IconButton,
 } from '@material-ui/core';
 
 //icons
