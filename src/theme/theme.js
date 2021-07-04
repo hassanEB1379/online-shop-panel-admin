@@ -1,4 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
+import overrides from './overrides';
+import shadows from './shadows';
 
 export const theme = createMuiTheme({
   direction: 'rtl',
@@ -32,23 +34,6 @@ export const theme = createMuiTheme({
       fontSize: 14,
     },
   },
-  overrides: {
-    MuiButton: {
-      root: {
-        borderRadius: '4rem',
-        padding: '.5rem 1.5rem',
-      },
-    },
-    MuiPaper: {
-      rounded: {
-        borderRadius: '1rem',
-      },
-    },
-    MuiOutlinedInput: {
-      root: {
-        borderRadius: '4rem',
-        padding: '0 1rem',
-      },
-    },
-  },
+  overrides,
+  shadows,
 });
