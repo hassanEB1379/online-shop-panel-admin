@@ -1,6 +1,9 @@
 import { Grid, makeStyles } from '@material-ui/core';
 import { useState } from 'react';
 import Navbar from 'components/navbar/Navbar';
+import { Switch, Route } from 'react-router-dom';
+import Media from 'pages/media/Media';
+import Sidebar from 'components/sidebar/Sidebar';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -10,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   contentWrapper: {
     width: '100%',
     overflow: 'auto',
-    padding: theme.spacing(2),
+    padding: theme.spacing(3, 2),
     marginTop: 80,
     [theme.breakpoints.up('md')]: {
       marginRight: props => (props.sidebarOpen ? 255 : 0),
@@ -43,7 +46,13 @@ const PanelLayout = () => {
         switchSidebar={() => setSidebarOpen(!sidebarOpen)}
       />
 
-      <Grid item className={classes.contentWrapper}></Grid>
+      <Sidebar open={sidebarOpen} />
+
+      <Grid item className={classes.contentWrapper}>
+        <Switch>
+          <Route path="/panel/media" component={Media} />
+        </Switch>
+      </Grid>
     </Grid>
   );
 };
