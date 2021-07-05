@@ -9,6 +9,9 @@ const overrides = {
     rounded: {
       borderRadius: '1rem',
     },
+    root: {
+      padding: 22,
+    },
   },
   MuiOutlinedInput: {
     root: {
