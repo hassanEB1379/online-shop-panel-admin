@@ -2,11 +2,12 @@ import {
   AppBar,
   IconButton,
   Toolbar,
-  makeStyles,
   Grid,
   Divider,
   Avatar,
+  Hidden,
 } from '@material-ui/core';
+import { useState } from 'react';
 import classNames from 'classnames';
 import Search from 'components/search/Search';
 
@@ -14,60 +15,84 @@ import Search from 'components/search/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import LanguageIcon from '@material-ui/icons/Language';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { SearchOutlined } from '@material-ui/icons';
 
 // styles
-const useStyles = makeStyles(theme => ({
-  appbar: {
-    height: 80,
-    boxShadow: theme.shadows[1],
-    justifyContent: 'center',
-  },
-}));
+import useStyles from './styles';
 
 const Navbar = ({ className, switchSidebar }) => {
-  const classes = useStyles();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const handleMobileNav = () => setMobileNavOpen(!mobileNavOpen);
+
+  const classes = useStyles({ mobileNavOpen });
 
   const appbarClasses = classNames(classes.appbar, className);
 
+  const Tools = (
+    <Grid container alignItems="center">
+      <Hidden xsDown>
+        <Search />
+      </Hidden>
+
+      <Hidden smUp>
+        <IconButton>
+          <SearchOutlined color="primary" />
+        </IconButton>
+      </Hidden>
+
+      <Divider orientation="vertical" flexItem />
+
+      <IconButton>
+        <NotificationsNoneIcon color="primary" />
+      </IconButton>
+
+      <Divider orientation="vertical" flexItem />
+
+      <IconButton>
+        <LanguageIcon color="primary" />
+      </IconButton>
+
+      <Divider orientation="vertical" flexItem />
+
+      <Avatar />
+    </Grid>
+  );
+
   return (
-    <AppBar className={appbarClasses}>
-      <Toolbar>
-        <Grid
-          container
-          alignItems="center"
-          justify="space-between"
-          wrap="nowrap"
-        >
-          <Grid item>
-            <IconButton onClick={switchSidebar}>
-              <MenuIcon />
-            </IconButton>
-          </Grid>
-
-          <Grid item>
-            <Grid container alignItems="center">
-              <Search />
-
-              <Divider orientation="vertical" flexItem />
-
-              <IconButton>
-                <NotificationsNoneIcon color="primary" />
+    <>
+      <AppBar className={appbarClasses}>
+        <Toolbar>
+          <Grid
+            container
+            alignItems="center"
+            justify="space-between"
+            wrap="nowrap"
+          >
+            <Grid item>
+              <IconButton onClick={switchSidebar}>
+                <MenuIcon />
               </IconButton>
+            </Grid>
 
-              <Divider orientation="vertical" flexItem />
+            <Grid item>
+              <Hidden xsDown>{Tools}</Hidden>
 
-              <IconButton>
-                <LanguageIcon color="primary" />
-              </IconButton>
-
-              <Divider orientation="vertical" flexItem />
-
-              <Avatar />
+              <Hidden smUp>
+                <IconButton onClick={handleMobileNav}>
+                  <MoreHorizIcon />
+                </IconButton>
+              </Hidden>
             </Grid>
           </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+
+      <Hidden smUp>
+        <div className={classes.collaps}>{Tools}</div>
+      </Hidden>
+    </>
   );
 };
 
