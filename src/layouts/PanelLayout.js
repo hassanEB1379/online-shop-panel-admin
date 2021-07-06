@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const PanelLayout = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const classes = useStyles({ sidebarOpen });
 
