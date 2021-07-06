@@ -27,11 +27,7 @@ const Sidebar = ({ open }) => {
       variant="persistent"
       anchor="left"
       open={open}
-      PaperProps={{
-        style: {
-          width: drawerWidth,
-        },
-      }}
+      classes={{ paper: classes.paper }}
     >
       <div className={classes.drawerHeader}></div>
       <Divider />
