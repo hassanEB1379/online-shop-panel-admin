@@ -9,6 +9,10 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
   },
+  paper: {
+    width: props => props.drawerWidth,
+    zIndex: theme.zIndex.mobileStepper,
+  },
   profileImg: {
     height: '80px',
     width: '80px',
