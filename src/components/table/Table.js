@@ -14,7 +14,7 @@ const Table = ({ columns, data }) => {
   });
 
   return (
-    <div>
+    <div style={{ overflowX: 'auto' }}>
       <MuiTable {...getTableProps()}>
         <TableHead>
           {headerGroups.map(headerGroup => (
