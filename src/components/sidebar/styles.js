@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import { DRAWER_WIDTH } from 'layouts/PanelLayout';
 
 const useStyles = makeStyles(theme => ({
   drawerHeader: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end',
   },
   paper: {
-    width: props => props.drawerWidth,
+    width: DRAWER_WIDTH,
     zIndex: theme.zIndex.mobileStepper,
   },
   profileImg: {

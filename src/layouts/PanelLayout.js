@@ -5,6 +5,10 @@ import { Switch, Route } from 'react-router-dom';
 import Media from 'pages/media/Media';
 import Sidebar from 'components/sidebar/Sidebar';
 
+export const DRAWER_WIDTH = 255;
+export const NAV_HEIGHT = 80;
+export const MOBILE_NAV_HEIGHT = 60;
+
 const useStyles = makeStyles(theme => ({
   container: {
     minHeight: '100vh',
@@ -14,9 +18,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     overflow: 'auto',
     padding: theme.spacing(3, 2),
-    marginTop: 80,
+    marginTop: NAV_HEIGHT,
     [theme.breakpoints.up('md')]: {
-      marginRight: props => (props.sidebarOpen ? 255 : 0),
+      marginRight: props => (props.sidebarOpen ? DRAWER_WIDTH : 0),
     },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
@@ -29,13 +33,14 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.up('md')]: {
-      width: props => (props.sidebarOpen ? 'calc(100% - 255px)' : '100%'),
+      width: props =>
+        props.sidebarOpen ? `calc(100% - ${DRAWER_WIDTH}px)` : '100%',
     },
   },
 }));
 
 const PanelLayout = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const classes = useStyles({ sidebarOpen });
 

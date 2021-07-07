@@ -1,10 +1,11 @@
 import { makeStyles } from '@material-ui/core';
+import { NAV_HEIGHT, MOBILE_NAV_HEIGHT } from 'layouts/PanelLayout';
 
 const useStyles = makeStyles(theme => ({
   appbar: {
-    height: 80,
+    height: NAV_HEIGHT,
     [theme.breakpoints.down('xs')]: {
-      height: 60,
+      height: MOBILE_NAV_HEIGHT,
     },
     boxShadow: theme.shadows[1],
     justifyContent: 'center',
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '100%',
     right: 0,
-    top: 60,
+    top: MOBILE_NAV_HEIGHT,
     backgroundColor: '#fff',
     padding: '5px 20px',
     zIndex: theme.zIndex.speedDial,
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     transform: props =>
       props.mobileNavOpen
         ? 'translate3d(0 , 0 , 0)'
-        : 'translate3d(0 , -60px , 0)',
+        : `translate3d(0 , -${MOBILE_NAV_HEIGHT}px , 0)`,
   },
 }));
 
