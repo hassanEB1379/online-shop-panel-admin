@@ -3,19 +3,37 @@ import {
   Divider,
   Drawer,
   List,
-  ListItemText,
-  ListItemIcon,
-  ListItem,
   Typography,
   Grid,
   Box,
 } from '@material-ui/core';
+import NavItem from './components/navItem/NavItem';
 
 // icons
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import { CloudUpload, Edit, Shop } from '@material-ui/icons';
 
 // styles
 import useStyles from './styles';
+
+// menu items
+const items = [
+  {
+    name: 'رسانه',
+    path: '/panel/media',
+    icon: CloudUpload,
+  },
+  {
+    name: 'محصولات',
+    icon: Shop,
+    children: [
+      {
+        name: 'افزودن محصول',
+        path: '/panel/product/add-product',
+        icon: Edit,
+      },
+    ],
+  },
+];
 
 const Sidebar = ({ open }) => {
   const classes = useStyles();
@@ -50,14 +68,9 @@ const Sidebar = ({ open }) => {
 
       <Divider />
 
-      <List>
-        {['رسانه'].map((text, index) => (
-          <ListItem button key={index}>
-            <ListItemIcon>
-              <HomeRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+      <List component="nav">
+        {items.map((item, index) => (
+          <NavItem key={index} item={item} />
         ))}
       </List>
     </Drawer>
