@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import { DRAWER_WIDTH } from 'layouts/PanelLayout';
 
 const useStyles = makeStyles(theme => ({
   drawerHeader: {
@@ -8,6 +9,10 @@ const useStyles = makeStyles(theme => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+  },
+  paper: {
+    width: DRAWER_WIDTH,
+    zIndex: theme.zIndex.mobileStepper,
   },
   profileImg: {
     height: '80px',

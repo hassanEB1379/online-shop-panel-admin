@@ -56,14 +56,14 @@ const Navbar = ({ className, switchSidebar }) => {
 
       <Divider orientation="vertical" flexItem />
 
-      <Avatar />
+      <Avatar src="/static/images/avatar.png" />
     </Grid>
   );
 
   return (
     <>
       <AppBar className={appbarClasses}>
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Grid
             container
             alignItems="center"
@@ -87,11 +87,11 @@ const Navbar = ({ className, switchSidebar }) => {
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
 
-      <Hidden smUp>
-        <div className={classes.collaps}>{Tools}</div>
-      </Hidden>
+        <Hidden smUp>
+          <div className={classes.navMenu}>{Tools}</div>
+        </Hidden>
+      </AppBar>
     </>
   );
 };

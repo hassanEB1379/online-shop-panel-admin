@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     bottom: 0,
     cursor: 'pointer',
-    zIndex: theme.zIndex.modal,
+    zIndex: 999,
   },
   tileContainer: {
     position: 'relative',

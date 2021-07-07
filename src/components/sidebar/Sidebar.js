@@ -17,21 +17,15 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 // styles
 import useStyles from './styles';
 
-const drawerWidth = 255;
-
 const Sidebar = ({ open }) => {
-  const classes = useStyles({ drawerWidth });
+  const classes = useStyles();
 
   return (
     <Drawer
       variant="persistent"
       anchor="left"
       open={open}
-      PaperProps={{
-        style: {
-          width: drawerWidth,
-        },
-      }}
+      classes={{ paper: classes.paper }}
     >
       <div className={classes.drawerHeader}></div>
       <Divider />

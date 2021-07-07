@@ -43,7 +43,7 @@ const FileList = () => {
           <Typography variant="h4">فایل های آپلود شده</Typography>
         </Grid>
 
-        <Grid item>
+        <Grid item xs={12}>
           <TableContainer>
             <Table>
               <TableHead>
@@ -73,7 +73,7 @@ const FileList = () => {
                     </TableCell>
                     <TableCell>{row.name}</TableCell>
                     <TableCell>{row.url}</TableCell>
-                    <TableCell padding="checkbox">
+                    <TableCell align="center" padding="checkbox">
                       <Checkbox />
                     </TableCell>
                   </TableRow>
