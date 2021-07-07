@@ -33,6 +33,11 @@ const overrides = {
       backgroundColor: 'rgb(0 0 0 / 6%)',
     },
   },
+  MuiListItemIcon: {
+    root: {
+      minWidth: 40,
+    },
+  },
 };
 
 export default overrides;
