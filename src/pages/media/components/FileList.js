@@ -73,7 +73,7 @@ const FileList = () => {
                     </TableCell>
                     <TableCell>{row.name}</TableCell>
                     <TableCell>{row.url}</TableCell>
-                    <TableCell padding="checkbox">
+                    <TableCell align="center" padding="checkbox">
                       <Checkbox />
                     </TableCell>
                   </TableRow>
