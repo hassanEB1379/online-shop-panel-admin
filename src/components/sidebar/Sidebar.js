@@ -7,7 +7,7 @@ import {
   Grid,
   Box,
 } from '@material-ui/core';
-import NavItem from './components/navItem/NavItem';
+import SidebarLink from './components/sidebarLink/SidebarLink';
 
 // icons
 import { CloudUpload, Edit, Shop } from '@material-ui/icons';
@@ -70,7 +70,7 @@ const Sidebar = ({ open }) => {
 
       <List component="nav">
         {items.map((item, index) => (
-          <NavItem key={index} item={item} />
+          <SidebarLink key={index} item={item} />
         ))}
       </List>
     </Drawer>

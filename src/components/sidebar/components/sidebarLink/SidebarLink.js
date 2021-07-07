@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 // icons
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
-const NavItem = ({ item }) => {
+const SidebarLink = ({ item }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -50,4 +50,4 @@ const NavItem = ({ item }) => {
   );
 };
 
-export default NavItem;
+export default SidebarLink;
