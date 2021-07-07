@@ -1,41 +1,69 @@
-import {
-  Grid,
-  Paper,
-  Typography,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  Button,
-  TableBody,
-  Checkbox,
-} from '@material-ui/core';
-
-const rows = [
-  {
-    image: '/static/images/city.jpg',
-    name: 'city.jpg',
-    url: 'images/city.jpg',
-  },
-  {
-    image: '/static/images/camera.jpg',
-    name: 'city.jpg',
-    url: 'images/city.jpg',
-  },
-  {
-    image: '/static/images/download.jpg',
-    name: 'city.jpg',
-    url: 'images/city.jpg',
-  },
-  {
-    image: '/static/images/images (1).jpg',
-    name: 'city.jpg',
-    url: 'images/city.jpg',
-  },
-];
+import { Grid, Paper, Typography } from '@material-ui/core';
+import Table from 'components/table/Table';
+import { useMemo } from 'react';
 
 const FileList = () => {
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'شناسه',
+        accessor: 'id',
+      },
+      {
+        Header: 'تصویر',
+        accessor: 'thumbnail',
+        Cell: ({ cell: { value } }) => (
+          <img width="75" height="75" alt={value} src={value} />
+        ),
+      },
+      {
+        Header: 'نام فایل',
+        accessor: 'name',
+      },
+      {
+        Header: 'آدرس',
+        accessor: 'address',
+      },
+    ],
+    []
+  );
+
+  const data = useMemo(
+    () => [
+      {
+        id: 1,
+        thumbnail: '/static/images/camera.jpg',
+        name: 'camera.jpg',
+        address: 'http://localhost:3000/static',
+      },
+      {
+        id: 2,
+        thumbnail: '/static/images/ben.jpeg',
+        name: 'ben.jpg',
+        address: 'http://localhost:3000/static',
+      },
+      {
+        id: 3,
+        thumbnail: '/static/images/download.jpg',
+        name: 'download.jpg',
+        address: 'http://localhost:3000/static',
+      },
+      {
+        id: 4,
+        thumbnail: '/static/images/images (1).jpg',
+        name: 'images (1).jpg',
+        address: 'http://localhost:3000/static',
+      },
+      {
+        id: 5,
+        thumbnail: '/static/images/city.jpg',
+        name: 'city.jpg',
+        address: 'http://localhost:3000/static',
+      },
+    ],
+    []
+  );
+
   return (
     <Paper>
       <Grid container direction="column" spacing={5}>
@@ -44,43 +72,7 @@ const FileList = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ردیف</TableCell>
-                  <TableCell>تصویر</TableCell>
-                  <TableCell>نام فایل</TableCell>
-                  <TableCell>آدرس</TableCell>
-                  <TableCell align="center">
-                    <Button variant="contained">حذف</Button>
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-
-              <TableBody>
-                {rows.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>
-                      <div style={{ width: 80, height: 80 }}>
-                        <img
-                          style={{ width: '100%', height: '100%' }}
-                          alt={row.name}
-                          src={row.image}
-                        />
-                      </div>
-                    </TableCell>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.url}</TableCell>
-                    <TableCell align="center" padding="checkbox">
-                      <Checkbox />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <Table columns={columns} data={data} />
         </Grid>
       </Grid>
     </Paper>
