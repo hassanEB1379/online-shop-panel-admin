@@ -35,7 +35,8 @@ const overrides = {
   },
   MuiListItemIcon: {
     root: {
-      minWidth: 40,
+      minWidth: 32,
+      color: 'inherit',
     },
   },
 };
