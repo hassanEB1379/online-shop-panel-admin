@@ -10,7 +10,7 @@ import {
 import SidebarLink from './components/sidebarLink/SidebarLink';
 
 // icons
-import { CloudUpload, Edit, Shop } from '@material-ui/icons';
+import { CloudUpload, Shop } from '@material-ui/icons';
 
 // styles
 import useStyles from './styles';
@@ -29,7 +29,6 @@ const items = [
       {
         name: 'افزودن محصول',
         path: '/panel/product/add-product',
-        icon: Edit,
       },
     ],
   },

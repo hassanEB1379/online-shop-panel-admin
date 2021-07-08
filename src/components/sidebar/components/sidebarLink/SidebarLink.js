@@ -10,36 +10,54 @@ import { Link } from 'react-router-dom';
 
 // icons
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+
+// styles
+import useStyles from './styles';
 
 const SidebarLink = ({ item }) => {
+  const classes = useStyles();
+
+  const { path, name, children, icon: Icon } = item;
+
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Link to={item.path}>
-        <ListItem button onClick={() => setOpen(!open)}>
+      <Link to={path}>
+        <ListItem className={classes.mainItem} onClick={() => setOpen(!open)}>
           <ListItemIcon>
-            <item.icon />
+            <Icon fontSize="small" />
           </ListItemIcon>
 
-          <ListItemText primary={item.name} />
+          <ListItemText
+            primaryTypographyProps={{
+              classes: { body1: classes.text },
+            }}
+            primary={name}
+          />
 
-          {item.children && (open ? <ExpandLess /> : <ExpandMore />)}
+          {children && (open ? <ExpandLess /> : <ExpandMore />)}
         </ListItem>
       </Link>
 
       {/* dropdown menu */}
-      {item.children && (
+      {children && (
         <Collapse in={open}>
-          <List style={{ backgroundColor: '#f9f9f9' }}>
-            {item.children.map((childItem, index) => (
+          <List>
+            {children.map((childItem, index) => (
               <Link key={index} to={childItem.path}>
-                <ListItem button style={{ paddingRight: '1.5rem' }}>
-                  <ListItemIcon>
-                    <childItem.icon />
+                <ListItem className={classes.subItem}>
+                  <ListItemIcon className={classes.dot}>
+                    <FiberManualRecordIcon />
                   </ListItemIcon>
 
-                  <ListItemText primary={childItem.name} />
+                  <ListItemText
+                    primaryTypographyProps={{
+                      classes: { body1: classes.text },
+                    }}
+                    primary={childItem.name}
+                  />
                 </ListItem>
               </Link>
             ))}
