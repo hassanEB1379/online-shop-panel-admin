@@ -1,8 +1,11 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import Table from 'components/table/Table';
+import { useMedia } from 'contexts/MediaContext';
 import { useMemo } from 'react';
 
 const FileList = () => {
+  const { media } = useMedia();
+
   const columns = useMemo(
     () => [
       {
@@ -22,47 +25,13 @@ const FileList = () => {
       },
       {
         Header: 'آدرس',
-        accessor: 'address',
+        accessor: 'url',
       },
     ],
     []
   );
 
-  const data = useMemo(
-    () => [
-      {
-        id: 1,
-        thumbnail: '/static/images/camera.jpg',
-        name: 'camera.jpg',
-        address: 'http://localhost:3000/static',
-      },
-      {
-        id: 2,
-        thumbnail: '/static/images/ben.jpeg',
-        name: 'ben.jpg',
-        address: 'http://localhost:3000/static',
-      },
-      {
-        id: 3,
-        thumbnail: '/static/images/download.jpg',
-        name: 'download.jpg',
-        address: 'http://localhost:3000/static',
-      },
-      {
-        id: 4,
-        thumbnail: '/static/images/images (1).jpg',
-        name: 'images (1).jpg',
-        address: 'http://localhost:3000/static',
-      },
-      {
-        id: 5,
-        thumbnail: '/static/images/city.jpg',
-        name: 'city.jpg',
-        address: 'http://localhost:3000/static',
-      },
-    ],
-    []
-  );
+  const data = useMemo(() => media, [media]);
 
   return (
     <Paper>

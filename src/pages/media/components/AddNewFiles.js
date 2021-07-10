@@ -18,6 +18,7 @@ const AddNewFiles = () => {
 
         <Grid item>
           <FileUploader
+            cols="6"
             multiple
             maxSize="6000000"
             onUpload={handleFileUploaderChange}

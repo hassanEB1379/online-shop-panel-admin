@@ -1,9 +1,10 @@
 import { Grid, makeStyles } from '@material-ui/core';
 import { useState } from 'react';
 import Navbar from 'components/navbar/Navbar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Media from 'pages/media/Media';
 import Sidebar from 'components/sidebar/Sidebar';
+import AddProduct from 'pages/addProduct/AddProduct';
 
 export const DRAWER_WIDTH = 255;
 export const NAV_HEIGHT = 80;
@@ -56,6 +57,11 @@ const PanelLayout = () => {
       <Grid item className={classes.contentWrapper}>
         <Switch>
           <Route path="/panel/media" component={Media} />
+          <Route path="/panel/product/add-product" component={AddProduct} />
+
+          {/* Redirects */}
+          <Redirect from="/panel" to="/panel/dashboard" />
+          <Redirect from="/panel/product" to="/panel/product/add-product" />
         </Switch>
       </Grid>
     </Grid>

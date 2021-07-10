@@ -5,12 +5,15 @@ import App from './App';
 import { ThemeProvider } from '@material-ui/core';
 import { theme } from './theme/theme';
 import { RTL } from './theme/rtl';
+import MediaProvider from 'contexts/MediaContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <RTL>
-        <App />
+        <MediaProvider>
+          <App />
+        </MediaProvider>
       </RTL>
     </ThemeProvider>
   </React.StrictMode>,

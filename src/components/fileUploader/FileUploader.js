@@ -13,11 +13,12 @@ import { Close } from '@material-ui/icons';
 // styles
 import useStyles from './styles';
 
-const FileUploader = ({ onUpload, maxSize, ...rest }) => {
+const FileUploader = ({ onUpload, maxSize, cols, ...rest }) => {
   const classes = useStyles();
 
   const [files, setFiles] = useState({});
 
+  
   const addNewFiles = newFiles => {
     for (const file of newFiles) {
       if (file.size <= maxSize) {
@@ -50,14 +51,18 @@ const FileUploader = ({ onUpload, maxSize, ...rest }) => {
   };
 
   const removeFile = fileName => {
-    delete files[fileName];
+    if (!rest.multiple) {
+      delete files['file'];
+    } else {
+      delete files[fileName];
+    }
 
     setFiles({ ...files });
     callUpdateFilesCb({ ...files });
   };
 
   const ImageList = (
-    <GridList cols={6} spacing={12}>
+    <GridList cols={cols} spacing={12}>
       {Object.values(files).map(file => (
         <GridListTile className={classes.tileContainer} key={file.name}>
           <div
