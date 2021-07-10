@@ -7,6 +7,8 @@ const useStyles = makeStyles(theme => ({
     height: 250,
     border: '2px dashed',
     borderColor: theme.palette.primary.main,
+    overflowY: 'auto',
+    overflowX: 'hidden',
   },
   fileInput: {
     width: ' 100%',
