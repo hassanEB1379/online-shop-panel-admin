@@ -1,10 +1,10 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import Table from 'components/table/Table';
-import { useMedia } from 'contexts/MediaContext';
+import { useMediaContext } from 'contexts/MediaContext';
 import { useMemo } from 'react';
 
 const FileList = () => {
-  const { media } = useMedia();
+  const { media } = useMediaContext();
 
   const columns = useMemo(
     () => [

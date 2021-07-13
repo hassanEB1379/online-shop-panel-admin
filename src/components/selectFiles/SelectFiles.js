@@ -8,16 +8,16 @@ import {
   Box,
 } from '@material-ui/core';
 import { useState } from 'react';
-import { useMedia } from 'contexts/MediaContext';
+import { useMediaContext } from 'contexts/MediaContext';
+import Preview from './components/Preview';
 
 // styles
 import useStyles from './styles';
-import Preview from './components/Preview';
 
 const SelectFiles = ({ onSelect }) => {
   const classes = useStyles();
 
-  const { media } = useMedia();
+  const { media } = useMediaContext();
 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
