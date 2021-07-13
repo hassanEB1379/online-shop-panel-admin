@@ -17,11 +17,11 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     bottom: 0,
     cursor: 'pointer',
-    zIndex: 999,
+    zIndex: 998,
   },
   tileContainer: {
     position: 'relative',
-    zIndex: theme.zIndex.tooltip,
+    zIndex: theme.zIndex.mobileStepper,
   },
   tile: {
     backgroundSize: 'cover',
