@@ -1,11 +1,8 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import Table from 'components/table/Table';
-import { useMediaContext } from 'contexts/MediaContext';
 import { useMemo } from 'react';
 
 const FileList = () => {
-  const { media } = useMediaContext();
-
   const columns = useMemo(
     () => [
       {
@@ -31,7 +28,7 @@ const FileList = () => {
     []
   );
 
-  const data = useMemo(() => media, [media]);
+  const tableData = useMemo(() => [], []);
 
   return (
     <Paper>
@@ -41,7 +38,7 @@ const FileList = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <Table columns={columns} data={data} />
+          <Table columns={columns} data={tableData} />
         </Grid>
       </Grid>
     </Paper>

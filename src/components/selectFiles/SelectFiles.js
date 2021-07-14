@@ -8,7 +8,6 @@ import {
   Box,
 } from '@material-ui/core';
 import { useState } from 'react';
-import { useMediaContext } from 'contexts/MediaContext';
 import Preview from './components/Preview';
 
 // styles
@@ -16,8 +15,6 @@ import useStyles from './styles';
 
 const SelectFiles = ({ onSelect }) => {
   const classes = useStyles();
-
-  const { media } = useMediaContext();
 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -27,16 +24,7 @@ const SelectFiles = ({ onSelect }) => {
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 
-  const handleSelectChange = e => {
-    const selectedFileId = e.target.dataset.id;
-
-    // find file with selected id
-    const selectedFile = media.filter(
-      item => item.id === Number(selectedFileId)
-    );
-
-    setFile(...selectedFile);
-  };
+  const handleSelectChange = e => {};
 
   // when 'انتخاب' button clicked
   const handleSelect = () => {
@@ -93,18 +81,7 @@ const SelectFiles = ({ onSelect }) => {
                 </Grid>
 
                 <Grid item className={classes.gridListContainer}>
-                  <div className={classes.gridList}>
-                    {media.map(file => (
-                      <img
-                        key={file.id}
-                        data-id={file.id}
-                        onClick={handleSelectChange}
-                        className={classes.gridListItem}
-                        alt={file.name}
-                        src={file.thumbnail}
-                      />
-                    ))}
-                  </div>
+                  <div className={classes.gridList}></div>
                 </Grid>
 
                 <Grid item>

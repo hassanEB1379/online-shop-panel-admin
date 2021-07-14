@@ -1,34 +1,3 @@
 {
-  "files": [
-    {
-      "id": "e558bf94ba2282442682468686708c7a",
-      "url": "https://res.cloudinary.com/hassaneb/image/upload/v1626160217/bmu1ewqo3zdqhhtdx2bx.jpg",
-      "thumbnail": "https://res.cloudinary.com/hassaneb/image/upload/v1626160217/bmu1ewqo3zdqhhtdx2bx.jpg",
-      "name": "image1"
-    },
-    {
-      "id": "c45d1d38b0b9fa5c91fb48bd4ea4c6ab",
-      "url": "https://res.cloudinary.com/hassaneb/image/upload/v1626160280/ve4jvhu1xpkl2ahaytz8.jpg",
-      "thumbnail": "https://res.cloudinary.com/hassaneb/image/upload/v1626160280/ve4jvhu1xpkl2ahaytz8.jpg",
-      "name": "city"
-    },
-    {
-      "id": "21f899fdda5d8c02ba01adb40a50120f",
-      "url": "https://res.cloudinary.com/hassaneb/image/upload/v1626160353/pqbcdpvsijuofps6tjmx.jpg",
-      "thumbnail": "https://res.cloudinary.com/hassaneb/image/upload/v1626160353/pqbcdpvsijuofps6tjmx.jpg",
-      "name": "download"
-    },
-    {
-      "id": "b6cfff1f6cdfe6ec2bbd8c0f81b59b1f",
-      "url": "https://res.cloudinary.com/hassaneb/image/upload/v1626160425/nr63smf05awmrkx4y5lt.jpg",
-      "thumbnail": "https://res.cloudinary.com/hassaneb/image/upload/v1626160425/nr63smf05awmrkx4y5lt.jpg",
-      "name": "ben-sweet-unsplash-1"
-    },
-    {
-      "id": "517ec10f4a38c87bad65a8d6104a22f0",
-      "url": "https://res.cloudinary.com/hassaneb/image/upload/v1626178602/yfyorc9sur4nkxdx7uea.jpg",
-      "thumbnail": "https://res.cloudinary.com/hassaneb/image/upload/v1626178602/yfyorc9sur4nkxdx7uea.jpg",
-      "name": "images (2)"
-    }
-  ]
+  "files": []
 }

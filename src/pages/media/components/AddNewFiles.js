@@ -1,38 +1,36 @@
 import { Button, Grid, Paper, Typography } from '@material-ui/core';
+import { useUploadFile } from 'hooks/MediaHooks';
 import FileUploader from 'components/fileUploader/FileUploader';
 import { useState } from 'react';
 
+const BTN_TEXT = 'آپلود فایل جدید';
+
 const AddNewFiles = () => {
-  const [files, setFiles] = useState([]);
+  const [file, setFile] = useState();
 
-  const handleFileUploaderChange = newFiles => setFiles(newFiles);
+  const handleFileUploaderChange = newFiles => setFile(newFiles);
 
-  const handleUpload = () => console.log(files);
+  const handleUpload = () => console.log(file);
 
   return (
     <Paper>
       <Grid container direction="column" spacing={5}>
-        <Grid item>
+        <Grid item container>
           <Typography variant="h4"> آپلود فایل جدید</Typography>
         </Grid>
 
         <Grid item>
-          <FileUploader
-            cols="6"
-            multiple
-            maxSize="6000000"
-            onUpload={handleFileUploaderChange}
-          />
+          <FileUploader maxSize="6000000" onUpload={handleFileUploaderChange} />
         </Grid>
 
         <Grid item>
           <Button
             onClick={handleUpload}
-            disabled={!files.length}
+            disabled={!file}
             color="primary"
             variant="contained"
           >
-            آپلود فایل های جدید
+            {BTN_TEXT}
           </Button>
         </Grid>
       </Grid>
