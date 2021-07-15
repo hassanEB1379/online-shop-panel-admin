@@ -1,8 +1,11 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import Table from 'components/table/Table';
+import { useAllMedia } from 'hooks/MediaHooks';
 import { useMemo } from 'react';
 
 const FileList = () => {
+  const { isLoading, isError, data, error } = useAllMedia();
+
   const columns = useMemo(
     () => [
       {
@@ -28,7 +31,7 @@ const FileList = () => {
     []
   );
 
-  const tableData = useMemo(() => [], []);
+  const tableData = useMemo(() => data, [data]);
 
   return (
     <Paper>
@@ -38,7 +41,11 @@ const FileList = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <Table columns={columns} data={tableData} />
+          {isLoading && <Typography variant="h4">در حال بارگذاری</Typography>}
+
+          {isError && <Typography variant="h4">{error.message}</Typography>}
+
+          {data && <Table columns={columns} data={tableData} />}
         </Grid>
       </Grid>
     </Paper>
