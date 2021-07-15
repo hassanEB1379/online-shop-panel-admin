@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getMedia = () => {
-  return axios.get('http://localhost:9000/files');
+  return axios.get('http://localhost:9000/files').then(res => res.data);
 };
 
 export const uploadSingleFile = async file => {
@@ -22,5 +22,7 @@ export const uploadSingleFile = async file => {
     });
 
   // store file info in db.json
-  return axios.post('http://localhost:9000/files', dataDb);
+  return axios
+    .post('http://localhost:9000/files', dataDb)
+    .then(res => res.data);
 };
