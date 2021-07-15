@@ -10,7 +10,9 @@ const AddNewFiles = () => {
 
   const handleFileUploaderChange = newFiles => setFile(newFiles);
 
-  const handleUpload = () => console.log(file);
+  const { mutate: upload } = useUploadFile();
+
+  const handleUpload = () => upload(file);
 
   return (
     <Paper>
