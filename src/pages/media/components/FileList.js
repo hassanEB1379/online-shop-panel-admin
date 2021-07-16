@@ -1,10 +1,11 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
+import OnFetch from 'components/onFetch/OnFetch';
 import Table from 'components/table/Table';
 import { useAllMedia } from 'hooks/MediaHooks';
 import { useMemo } from 'react';
 
 const FileList = () => {
-  const { isLoading, isError, data, error } = useAllMedia();
+  const { isLoading, isError, data, refetch } = useAllMedia();
 
   const columns = useMemo(
     () => [
@@ -16,7 +17,13 @@ const FileList = () => {
         Header: 'تصویر',
         accessor: 'thumbnail',
         Cell: ({ cell: { value } }) => (
-          <img width="75" height="75" alt={value} src={value} />
+          <img
+            width="75"
+            height="75"
+            style={{ objectFit: 'cover' }}
+            alt={value}
+            src={value}
+          />
         ),
       },
       {
@@ -41,9 +48,9 @@ const FileList = () => {
         </Grid>
 
         <Grid item xs={12}>
-          {isLoading && <Typography variant="h4">در حال بارگذاری</Typography>}
+          {isLoading && <OnFetch variant="loading" />}
 
-          {isError && <Typography variant="h4">{error.message}</Typography>}
+          {isError && <OnFetch variant="error" reFetch={refetch} />}
 
           {data && <Table columns={columns} data={tableData} />}
         </Grid>
