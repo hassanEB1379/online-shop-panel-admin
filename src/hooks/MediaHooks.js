@@ -15,3 +15,5 @@ export function useUploadFile() {
     },
   });
 }
+
+export function useDeleteFile() {}

@@ -26,3 +26,5 @@ export const uploadSingleFile = async file => {
     .post('http://localhost:9000/files', dataDb)
     .then(res => res.data);
 };
+
+export const deleteFiles = async ids => {};
