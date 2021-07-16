@@ -22,24 +22,26 @@ const SidebarLink = ({ item }) => {
 
   const [open, setOpen] = useState(false);
 
+  const ParentLink = (
+    <ListItem className={classes.mainItem} onClick={() => setOpen(!open)}>
+      <ListItemIcon>
+        <Icon fontSize="small" />
+      </ListItemIcon>
+
+      <ListItemText
+        primaryTypographyProps={{
+          classes: { body1: classes.text },
+        }}
+        primary={name}
+      />
+
+      {children && (open ? <ExpandLess /> : <ExpandMore />)}
+    </ListItem>
+  );
+
   return (
     <>
-      <Link to={path}>
-        <ListItem className={classes.mainItem} onClick={() => setOpen(!open)}>
-          <ListItemIcon>
-            <Icon fontSize="small" />
-          </ListItemIcon>
-
-          <ListItemText
-            primaryTypographyProps={{
-              classes: { body1: classes.text },
-            }}
-            primary={name}
-          />
-
-          {children && (open ? <ExpandLess /> : <ExpandMore />)}
-        </ListItem>
-      </Link>
+      {path ? <Link to={path}>{ParentLink}</Link> : ParentLink}
 
       {/* dropdown menu */}
       {children && (

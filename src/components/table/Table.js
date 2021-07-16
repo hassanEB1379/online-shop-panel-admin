@@ -4,14 +4,38 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Checkbox,
+  Fab,
 } from '@material-ui/core';
-import { useTable } from 'react-table';
+import { Delete } from '@material-ui/icons';
+import { useTable, useRowSelect } from 'react-table';
 
-const Table = ({ columns, data }) => {
-  const { getTableProps, headerGroups, rows, prepareRow } = useTable({
-    columns,
-    data,
-  });
+const Table = ({ columns, data, deleteHandler }) => {
+  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
+    {
+      columns,
+      data,
+    },
+    useRowSelect,
+    hooks => {
+      hooks.visibleColumns.push(columns => [
+        // render rest columns
+        ...columns,
+        // Let's make a column for selection
+        {
+          id: 'selection',
+
+          Header: () => (
+            <Fab size="small" color="secondary">
+              <Delete />
+            </Fab>
+          ),
+
+          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
+        },
+      ]);
+    }
+  );
 
   return (
     <div style={{ overflowX: 'auto' }}>

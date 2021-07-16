@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     width: DRAWER_WIDTH,
-    zIndex: theme.zIndex.mobileStepper,
+    zIndex: theme.zIndex.speedDial,
   },
   profileImg: {
     height: '80px',

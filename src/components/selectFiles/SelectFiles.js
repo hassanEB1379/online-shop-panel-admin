@@ -7,17 +7,17 @@ import {
   Typography,
   Box,
 } from '@material-ui/core';
+import { useAllMedia } from 'hooks/MediaHooks';
 import { useState } from 'react';
-import { useMedia } from 'contexts/MediaContext';
+import Preview from './components/Preview';
 
 // styles
 import useStyles from './styles';
-import Preview from './components/Preview';
 
 const SelectFiles = ({ onSelect }) => {
   const classes = useStyles();
 
-  const { media } = useMedia();
+  const { data: files } = useAllMedia();
 
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -28,14 +28,12 @@ const SelectFiles = ({ onSelect }) => {
   const handleModalClose = () => setModalOpen(false);
 
   const handleSelectChange = e => {
-    const selectedFileId = e.target.dataset.id;
+    // seleted file id
+    const { id } = e.target.dataset;
 
-    // find file with selected id
-    const selectedFile = media.filter(
-      item => item.id === Number(selectedFileId)
-    );
+    const getSelectedFileById = files.filter(file => file.id === id);
 
-    setFile(...selectedFile);
+    setFile(...getSelectedFileById);
   };
 
   // when 'انتخاب' button clicked
@@ -94,16 +92,16 @@ const SelectFiles = ({ onSelect }) => {
 
                 <Grid item className={classes.gridListContainer}>
                   <div className={classes.gridList}>
-                    {media.map(file => (
-                      <img
-                        key={file.id}
-                        data-id={file.id}
-                        onClick={handleSelectChange}
-                        className={classes.gridListItem}
-                        alt={file.name}
-                        src={file.thumbnail}
-                      />
-                    ))}
+                    {files &&
+                      files.map(file => (
+                        <img
+                          className={classes.gridListItem}
+                          alt={file.name}
+                          src={file.thumbnail}
+                          data-id={file.id}
+                          onClick={handleSelectChange}
+                        />
+                      ))}
                   </div>
                 </Grid>
 
