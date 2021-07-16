@@ -7,6 +7,7 @@ import {
   Typography,
   Box,
 } from '@material-ui/core';
+import { useAllMedia } from 'hooks/MediaHooks';
 import { useState } from 'react';
 import Preview from './components/Preview';
 
@@ -16,6 +17,8 @@ import useStyles from './styles';
 const SelectFiles = ({ onSelect }) => {
   const classes = useStyles();
 
+  const { data: files } = useAllMedia();
+
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +27,14 @@ const SelectFiles = ({ onSelect }) => {
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 
-  const handleSelectChange = e => {};
+  const handleSelectChange = e => {
+    // seleted file id
+    const { id } = e.target.dataset;
+
+    const getSelectedFileById = files.filter(file => file.id === id);
+
+    setFile(...getSelectedFileById);
+  };
 
   // when 'انتخاب' button clicked
   const handleSelect = () => {
@@ -81,7 +91,18 @@ const SelectFiles = ({ onSelect }) => {
                 </Grid>
 
                 <Grid item className={classes.gridListContainer}>
-                  <div className={classes.gridList}></div>
+                  <div className={classes.gridList}>
+                    {files &&
+                      files.map(file => (
+                        <img
+                          className={classes.gridListItem}
+                          alt={file.name}
+                          src={file.thumbnail}
+                          data-id={file.id}
+                          onClick={handleSelectChange}
+                        />
+                      ))}
+                  </div>
                 </Grid>
 
                 <Grid item>
