@@ -11,31 +11,20 @@ import { Delete } from '@material-ui/icons';
 import { useTable, useRowSelect } from 'react-table';
 
 const Table = ({ columns, data, deleteHandler }) => {
-  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
-    {
-      columns,
-      data,
-    },
-    useRowSelect,
-    hooks => {
-      hooks.visibleColumns.push(columns => [
-        // render rest columns
-        ...columns,
-        // Let's make a column for selection
-        {
-          id: 'selection',
+  const { getTableProps, headerGroups, rows, prepareRow, selectedFlatRows } =
+    useTable(
+      {
+        columns,
+        data,
+      },
+      useRowSelect
+    );
 
-          Header: () => (
-            <Fab size="small" color="secondary">
-              <Delete />
-            </Fab>
-          ),
+  const handleDelete = () => {
+    const ids = selectedFlatRows.map(row => row.values.id);
 
-          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
-        },
-      ]);
-    }
-  );
+    deleteHandler(ids);
+  };
 
   return (
     <div style={{ overflowX: 'auto' }}>
@@ -48,6 +37,12 @@ const Table = ({ columns, data, deleteHandler }) => {
                   {column.render('Header')}
                 </TableCell>
               ))}
+
+              <TableCell>
+                <Fab size="small" color="secondary" onClick={handleDelete}>
+                  <Delete />
+                </Fab>
+              </TableCell>
             </TableRow>
           ))}
         </TableHead>
@@ -64,6 +59,10 @@ const Table = ({ columns, data, deleteHandler }) => {
                     </TableCell>
                   );
                 })}
+
+                <TableCell>
+                  <Checkbox {...row.getToggleRowSelectedProps()} />
+                </TableCell>
               </TableRow>
             );
           })}

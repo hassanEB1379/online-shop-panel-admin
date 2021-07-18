@@ -1,11 +1,16 @@
 import { Grid, Paper, Typography } from '@material-ui/core';
 import OnFetch from 'components/onFetch/OnFetch';
 import Table from 'components/table/Table';
+import { useDeleteFiles } from 'hooks/MediaHooks';
 import { useAllMedia } from 'hooks/MediaHooks';
 import { useMemo } from 'react';
 
 const FileList = () => {
-  const { isLoading, isError, data, refetch } = useAllMedia();
+  const { isLoading, isError, isSuccess, data, refetch } = useAllMedia();
+
+  const { mutate: deleteFiles } = useDeleteFiles();
+
+  const tableData = useMemo(() => data, [data]);
 
   const columns = useMemo(
     () => [
@@ -38,8 +43,6 @@ const FileList = () => {
     []
   );
 
-  const tableData = useMemo(() => data, [data]);
-
   return (
     <Paper>
       <Grid container direction="column" spacing={5}>
@@ -52,7 +55,15 @@ const FileList = () => {
 
           {isError && <OnFetch variant="error" reFetch={refetch} />}
 
-          {data && !isError && <Table columns={columns} data={tableData} />}
+          {isSuccess && data.length ? (
+            <Table
+              columns={columns}
+              data={tableData}
+              deleteHandler={deleteFiles}
+            />
+          ) : (
+            <Typography>رسانه ای وجود ندارد</Typography>
+          )}
         </Grid>
       </Grid>
     </Paper>

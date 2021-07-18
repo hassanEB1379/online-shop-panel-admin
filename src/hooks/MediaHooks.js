@@ -1,5 +1,4 @@
-import { uploadSingleFile } from 'api/MediaApi';
-import { getMedia } from 'api/MediaApi';
+import { uploadSingleFile, deleteFiles, getMedia } from 'api/MediaApi';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export function useAllMedia() {
@@ -16,4 +15,12 @@ export function useUploadFile() {
   });
 }
 
-export function useDeleteFile() {}
+export function useDeleteFiles() {
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteFiles, {
+    onSuccess: () => {
+      queryClient.refetchQueries('media');
+    },
+  });
+}
