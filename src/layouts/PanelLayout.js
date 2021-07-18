@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Media from 'pages/media/Media';
 import Sidebar from 'components/sidebar/Sidebar';
 import AddProduct from 'pages/addProduct/AddProduct';
+import ProductList from 'pages/ProductList/ProductList';
 
 export const DRAWER_WIDTH = 255;
 export const NAV_HEIGHT = 80;
@@ -58,6 +59,7 @@ const PanelLayout = () => {
         <Switch>
           <Route path="/panel/media" component={Media} />
           <Route path="/panel/product/add-product" component={AddProduct} />
+          <Route path="/panel/product/product-list" component={ProductList} />
 
           {/* Redirects */}
           <Redirect from="/panel" to="/panel/dashboard" />
