@@ -27,4 +27,10 @@ export const uploadSingleFile = async file => {
     .then(res => res.data);
 };
 
-export const deleteFiles = async ids => {};
+export const deleteFiles = async ids => {
+  const requests = ids.map(id =>
+    axios.delete(`http://localhost:9000/files/${id}`)
+  );
+
+  return Promise.all(requests);
+};
