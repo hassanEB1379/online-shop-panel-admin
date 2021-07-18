@@ -4,7 +4,8 @@ import Select from 'components/customInputs/CustomSelect';
 import PageTitle from 'components/pageTitle/PageTitle';
 import SelectFiles from 'components/selectFiles/SelectFiles';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useAddProduct } from 'hooks/ProductHooks';
+import { useEffect, useState } from 'react';
 import { ProductSchema as validationSchema } from 'utils/validations/schema';
 
 const sampleOptionsCategory = [
@@ -27,24 +28,33 @@ const sampleOptionsCategory = [
 ];
 
 const AddProduct = () => {
-  const handleAddProduct = values => {
-    values.image = productImage;
-    console.log(values);
-  };
+  const { mutate: add, isSuccess, isError } = useAddProduct();
 
   const [productImage, setProductImage] = useState('');
 
-  const { handleSubmit, getFieldProps, touched, errors } = useFormik({
-    initialValues: {
-      title: '',
-      description: '',
-      price: '',
-      priceWithDiscount: '',
-      category: '',
-    },
-    validationSchema,
-    onSubmit: handleAddProduct,
-  });
+  const { handleSubmit, handleReset, getFieldProps, touched, errors } =
+    useFormik({
+      initialValues: {
+        title: '',
+        description: '',
+        price: '',
+        priceWithDiscount: '',
+        category: '',
+      },
+      validationSchema,
+      onSubmit: values => {
+        // add product image to values
+        values.image = productImage;
+
+        // add product to server
+        add(values);
+      },
+    });
+
+  // reset form if add product success
+  useEffect(() => {
+    if (isSuccess) handleReset();
+  }, [handleReset, isSuccess]);
 
   return (
     <Grid container direction="column" spacing={4}>
@@ -59,7 +69,7 @@ const AddProduct = () => {
               <form onSubmit={handleSubmit}>
                 <Box paddingBottom="1rem">
                   <Button type="submit" variant="contained" color="primary">
-                    افزودن محصول
+                    {isError ? 'تلاش مجدد' : 'افزودن محصول'}
                   </Button>
                 </Box>
 
