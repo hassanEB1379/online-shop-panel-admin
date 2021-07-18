@@ -30,6 +30,10 @@ const items = [
         name: 'افزودن محصول',
         path: '/panel/product/add-product',
       },
+      {
+        name: 'لیست محصولات',
+        path: '/panel/product/product-list',
+      },
     ],
   },
 ];
