@@ -95,6 +95,7 @@ const SelectFiles = ({ onSelect }) => {
                     {files &&
                       files.map(file => (
                         <img
+                          key={file.id}
                           className={classes.gridListItem}
                           alt={file.name}
                           src={file.thumbnail}

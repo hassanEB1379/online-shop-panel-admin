@@ -1,4 +1,4 @@
-import { makeStyles, Typography, Select } from '@material-ui/core';
+import { makeStyles, Typography, Select, FormControl } from '@material-ui/core';
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CustomSelect = props => {
-  const { id, label, options, ...rest } = props;
+  const { id, label, options, error, ...rest } = props;
 
   const classes = useStyles();
 
@@ -22,22 +22,24 @@ const CustomSelect = props => {
         <Typography>{label}</Typography>
       </label>
 
-      <Select native id={id} {...rest}>
-        {/* render options */}
-        {options.map(group => {
-          const { groupName, options } = group;
+      <FormControl error={Boolean(error)}>
+        <Select native id={id} {...rest}>
+          {/* render options */}
+          {options.map(group => {
+            const { groupName, options } = group;
 
-          return (
-            <optgroup key={groupName} label={groupName}>
-              {options.map(option => (
-                <option key={option.value} value={option.value}>
-                  {option.name}
-                </option>
-              ))}
-            </optgroup>
-          );
-        })}
-      </Select>
+            return (
+              <optgroup key={groupName} label={groupName}>
+                {options.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.name}
+                  </option>
+                ))}
+              </optgroup>
+            );
+          })}
+        </Select>
+      </FormControl>
     </div>
   );
 };
