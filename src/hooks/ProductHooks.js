@@ -1,4 +1,4 @@
-import { getProducts, addProduct } from 'api/ProductApi';
+import { getProducts, addProduct, deleteProducts } from 'api/ProductApi';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 export function useAllProducts() {
@@ -9,6 +9,16 @@ export function useAddProduct() {
   const queryClient = useQueryClient();
 
   return useMutation(addProduct, {
+    onSuccess: () => {
+      queryClient.refetchQueries('products');
+    },
+  });
+}
+
+export function useDeleteProducts() {
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteProducts, {
     onSuccess: () => {
       queryClient.refetchQueries('products');
     },
