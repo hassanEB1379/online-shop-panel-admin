@@ -52,7 +52,7 @@ const FileList = () => {
 
           {isError && <OnFetch variant="error" reFetch={refetch} />}
 
-          {data && <Table columns={columns} data={tableData} />}
+          {data && !isError && <Table columns={columns} data={tableData} />}
         </Grid>
       </Grid>
     </Paper>
