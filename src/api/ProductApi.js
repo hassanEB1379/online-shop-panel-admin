@@ -7,3 +7,11 @@ export const getProducts = () => {
 export const addProduct = data => {
   return axios.post('http://localhost:9000/products', data);
 };
+
+export const deleteProducts = async ids => {
+  const requests = ids.map(id =>
+    axios.delete(`http://localhost:9000/products/${id}`)
+  );
+
+  return Promise.all(requests);
+};
