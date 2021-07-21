@@ -55,15 +55,16 @@ const FileList = () => {
 
           {isError && <OnFetch variant="error" reFetch={refetch} />}
 
-          {isSuccess && data.length ? (
-            <Table
-              columns={columns}
-              data={tableData}
-              deleteHandler={deleteFiles}
-            />
-          ) : (
-            <Typography>رسانه ای وجود ندارد</Typography>
-          )}
+          {isSuccess &&
+            (data.length ? (
+              <Table
+                columns={columns}
+                data={tableData}
+                deleteHandler={deleteFiles}
+              />
+            ) : (
+              <Typography>رسانه ای وجود ندارد</Typography>
+            ))}
         </Grid>
       </Grid>
     </Paper>

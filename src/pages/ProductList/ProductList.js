@@ -66,15 +66,16 @@ const ProductList = () => {
 
               {isError && <OnFetch variant="error" reFetch={refetch} />}
 
-              {isSuccess && data.length ? (
-                <Table
-                  columns={columns}
-                  data={tableData}
-                  deleteHandler={deleteProducts}
-                />
-              ) : (
-                <Typography>محصولی وجود ندارد</Typography>
-              )}
+              {isSuccess &&
+                (data.length ? (
+                  <Table
+                    columns={columns}
+                    data={tableData}
+                    deleteHandler={deleteProducts}
+                  />
+                ) : (
+                  <Typography>محصولی وجود ندارد</Typography>
+                ))}
             </Grid>
           </Grid>
         </Paper>

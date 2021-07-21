@@ -1,4 +1,4 @@
-const shadows = [
+export const shadows = [
   'none',
   '0 0 10px 1px rgb(68 102 242 / 5%)',
   '0 0 1px 0 rgba(0,0,0,0.31), 0 2px 2px -2px rgba(0,0,0,0.25)',
@@ -25,5 +25,3 @@ const shadows = [
   '0 0 1px 0 rgba(0,0,0,0.31), 0 22px 34px -8px rgba(0,0,0,0.25)',
   '0 0 1px 0 rgba(0,0,0,0.31), 0 24px 36px -8px rgba(0,0,0,0.25)',
 ];
-
-export default shadows;

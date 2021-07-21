@@ -10,7 +10,7 @@ import {
 import SidebarLink from './components/sidebarLink/SidebarLink';
 
 // icons
-import { CloudUpload, Shop } from '@material-ui/icons';
+import { CloudUpload, Settings, Shop } from '@material-ui/icons';
 
 // styles
 import useStyles from './styles';
@@ -35,6 +35,11 @@ const items = [
         path: '/panel/product/product-list',
       },
     ],
+  },
+  {
+    name: 'تنظیمات',
+    path: '/panel/settings',
+    icon: Settings,
   },
 ];
 

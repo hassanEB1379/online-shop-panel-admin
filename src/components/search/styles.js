@@ -1,8 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 
-// palette
-import grey from '@material-ui/core/colors/grey';
-
 const useStyles = makeStyles(theme => ({
   search: {
     position: 'relative',
@@ -10,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   searchBase: {
-    backgroundColor: grey[100],
+    backgroundColor: theme.palette.action.hover,
     borderRadius: '4rem',
     padding: theme.spacing(1, 2),
   },
@@ -26,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
+    color: theme.palette.text.secondary,
   },
 }));
 

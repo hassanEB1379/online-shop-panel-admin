@@ -11,7 +11,7 @@ const OnFetch = ({ variant, reFetch, ...rest }) => {
   const handleRefetch = () => reFetch();
 
   return (
-    <Box bgcolor="#fff" height="300px" clone {...rest}>
+    <Box bgcolor="background.paper" height="300px" clone {...rest}>
       <Grid
         container
         direction="column"

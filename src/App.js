@@ -5,7 +5,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import LoginLayout from 'layouts/LoginLayout';
-import PanelLayout from 'layouts/PanelLayout';
+import PanelLayout from 'layouts/panel/PanelLayout';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 

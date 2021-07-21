@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import { DRAWER_WIDTH } from 'layouts/PanelLayout';
+import { DRAWER_WIDTH } from 'utils/constants/Constants';
 
 const useStyles = makeStyles(theme => ({
   drawerHeader: {
