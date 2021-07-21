@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxWidth: 275,
     height: 200,
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor: theme.palette.action.selected,
     boxShadow: theme.shadows[4],
     borderRadius: theme.spacing(1),
     overflow: 'hidden',

@@ -1,18 +1,15 @@
-import { Grid } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import Login from 'pages/Login/Login';
 
 const LoginLayout = () => {
   return (
-    <Grid
-      style={{ minHeight: '100vh' }}
-      container
-      alignItems="center"
-      justify="center"
-    >
-      <Grid item>
-        <Login />
+    <Box bgcolor="background.default" minHeight="100vh" clone>
+      <Grid container alignItems="center" justify="center">
+        <Grid item>
+          <Login />
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 

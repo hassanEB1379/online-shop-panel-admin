@@ -1,10 +1,21 @@
-const { Typography } = require('@material-ui/core');
+const { Typography, makeStyles } = require('@material-ui/core');
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    color: theme.palette.text.primary,
+  },
+}));
 
 const PageTitle = ({ title, subTitle }) => {
+  const classes = useStyles();
   return (
     <div>
-      <Typography variant="h3">{title}</Typography>
-      <Typography variant="caption">{subTitle}</Typography>
+      <Typography className={classes.root} variant="h3">
+        {title}
+      </Typography>
+      <Typography className={classes.root} variant="caption">
+        {subTitle}
+      </Typography>
     </div>
   );
 };

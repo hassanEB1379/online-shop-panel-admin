@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import { NAV_HEIGHT, MOBILE_NAV_HEIGHT } from 'layouts/PanelLayout';
+import { NAV_HEIGHT, MOBILE_NAV_HEIGHT } from 'utils/constants/Constants';
 
 const useStyles = makeStyles(theme => ({
   appbar: {
@@ -9,10 +9,11 @@ const useStyles = makeStyles(theme => ({
     },
     boxShadow: theme.shadows[1],
     justifyContent: 'center',
+    backgroundColor: theme.palette.background.paper,
   },
   toolbar: {
     zIndex: theme.zIndex.appBar,
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.background.paper,
   },
   navMenu: {
     position: 'absolute',
