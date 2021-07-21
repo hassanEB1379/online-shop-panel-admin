@@ -1,4 +1,4 @@
-const overrides = {
+export const overrides = {
   MuiButton: {
     root: {
       borderRadius: '4rem',
@@ -19,18 +19,13 @@ const overrides = {
       padding: '0 1rem',
     },
   },
-  MuiAppBar: {
-    colorPrimary: {
-      color: '#000',
-      backgroundColor: '#fff',
-    },
-  },
   MuiDivider: {
     vertical: {
       margin: '0 10px',
     },
     root: {
       backgroundColor: 'rgb(0 0 0 / 6%)',
+      margin: '6px 0',
     },
   },
   MuiListItemIcon: {
@@ -39,6 +34,14 @@ const overrides = {
       color: 'inherit',
     },
   },
+  MuiTabs: {
+    indicator: {
+      display: 'none',
+    },
+  },
+  MuiDrawer: {
+    paperAnchorDockedRight: {
+      borderLeft: 'none',
+    },
+  },
 };
-
-export default overrides;
