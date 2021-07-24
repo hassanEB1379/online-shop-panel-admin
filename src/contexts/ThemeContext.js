@@ -1,26 +1,28 @@
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { useEffect, useState } from 'react';
-import { useContext, createContext } from 'react';
+import { useEffect, useReducer, useContext, createContext } from 'react';
+import { themeReducer, initialTheme, initFunc } from 'reducers/ThemeReducer';
 import { typography, overrides, shadows } from 'theme';
 
-const SetThemeNameContext = createContext();
-const ThemeNameContext = createContext();
+const themeInfoContext = createContext();
+const themeInfoDispatchContext = createContext();
 
-export const useSetThemeName = () => useContext(SetThemeNameContext);
-export const useThemeName = () => useContext(ThemeNameContext);
+export const useThemeInfo = () => useContext(themeInfoContext);
+export const useThemeInfoDispatch = () => useContext(themeInfoDispatchContext);
 
 export const ThemeProvider = ({ children }) => {
-  const getThemeFromLs = localStorage.getItem('theme');
-
-  const [themeName, setThemeName] = useState(getThemeFromLs);
+  const [themeInfo, dispatch] = useReducer(
+    themeReducer,
+    initialTheme,
+    initFunc
+  );
 
   const theme = createMuiTheme({
-    direction: 'rtl',
+    direction: themeInfo.direction,
     typography,
     overrides,
     shadows,
     palette: {
-      type: themeName,
+      type: themeInfo.themeName,
       primary: {
         light: '#ff999c',
         main: '#ff8084',
@@ -32,14 +34,18 @@ export const ThemeProvider = ({ children }) => {
 
   // save new theme to localStorage
   useEffect(() => {
-    localStorage.setItem('theme', themeName);
-  }, [themeName]);
+    localStorage.setItem('theme', JSON.stringify(themeInfo));
+  }, [themeInfo]);
+
+  useEffect(() => {
+    document.body.dir = themeInfo.direction;
+  }, [themeInfo.direction]);
 
   return (
-    <ThemeNameContext.Provider value={themeName}>
-      <SetThemeNameContext.Provider value={setThemeName}>
+    <themeInfoContext.Provider value={themeInfo}>
+      <themeInfoDispatchContext.Provider value={dispatch}>
         <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
-      </SetThemeNameContext.Provider>
-    </ThemeNameContext.Provider>
+      </themeInfoDispatchContext.Provider>
+    </themeInfoContext.Provider>
   );
 };
