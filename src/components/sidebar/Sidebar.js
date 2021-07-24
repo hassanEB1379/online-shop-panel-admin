@@ -8,43 +8,18 @@ import {
   Box,
 } from '@material-ui/core';
 import SidebarLink from './components/sidebarLink/SidebarLink';
+import { useTranslation } from 'react-i18next';
 
-// icons
-import { CloudUpload, Settings, Shop } from '@material-ui/icons';
+// menu items
+import panelRoutes from 'routes';
 
 // styles
 import useStyles from './styles';
 
-// menu items
-const items = [
-  {
-    name: 'رسانه',
-    path: '/panel/media',
-    icon: CloudUpload,
-  },
-  {
-    name: 'محصولات',
-    icon: Shop,
-    children: [
-      {
-        name: 'افزودن محصول',
-        path: '/panel/product/add-product',
-      },
-      {
-        name: 'لیست محصولات',
-        path: '/panel/product/product-list',
-      },
-    ],
-  },
-  {
-    name: 'تنظیمات',
-    path: '/panel/settings',
-    icon: Settings,
-  },
-];
-
 const Sidebar = ({ open }) => {
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   return (
     <Drawer
@@ -69,7 +44,7 @@ const Sidebar = ({ open }) => {
           </Grid>
 
           <Grid item>
-            <Typography align="center"> خوش آمدید</Typography>
+            <Typography align="center">{t('welcome')}</Typography>
           </Grid>
         </Grid>
       </Box>
@@ -77,7 +52,7 @@ const Sidebar = ({ open }) => {
       <Divider />
 
       <List component="nav">
-        {items.map((item, index) => (
+        {panelRoutes.map((item, index) => (
           <SidebarLink key={index} item={item} />
         ))}
       </List>
