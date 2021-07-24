@@ -1,0 +1,53 @@
+{
+  "pageTitles": {
+    "dashboard": "Dashboard",
+    "media": "Media",
+    "products": "Products",
+    "addProduct": "Add product",
+    "productList": "ProductList",
+    "settings": "Settings"
+  },
+  "media": {
+    "upload": "Upload new file",
+    "list": "Uploaded files",
+    "uploadMsg": "Drag or click to upload new files",
+    "noFile": "There are no files",
+    "id": "ID",
+    "picture": "Picture",
+    "url": "Adress",
+    "name": "File name"
+  },
+  "product": {
+    "add": "Add product",
+    "addImg": "Add image",
+    "id": "ID",
+    "picture": "Picture",
+    "title": "Title",
+    "desc": "Description",
+    "price": "Price",
+    "discount": "Price with discount",
+    "category": "category",
+    "noProduct": "There are no products"
+  },
+  "setting": {
+    "public": "Public changes",
+    "changeTheme": "Change theme",
+    "changeLang": "Change language"
+  },
+  "info": {
+    "userName": "User name",
+    "email": "Email",
+    "phone": "Phone number",
+    "role": "Role",
+    "password": "Password"
+  },
+  "fetch": {
+    "reload": "Retry",
+    "error": "Communication error",
+    "loading": "Loading"
+  },
+  "search": "search...",
+  "welcome": "Welcome",
+  "addImgBtn": "Add +",
+  "selectFile": "Select File"
+}
