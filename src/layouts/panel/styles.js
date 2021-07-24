@@ -13,7 +13,11 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3, 2),
     marginTop: NAV_HEIGHT,
     [theme.breakpoints.up('md')]: {
-      marginRight: props => (props.sidebarOpen ? DRAWER_WIDTH : 0),
+      marginRight: props =>
+        theme.direction === 'rtl' && props.sidebarOpen ? DRAWER_WIDTH : 0,
+
+      marginLeft: props =>
+        theme.direction === 'ltr' && props.sidebarOpen ? DRAWER_WIDTH : 0,
     },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
