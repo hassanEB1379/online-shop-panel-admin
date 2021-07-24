@@ -1,4 +1,4 @@
-const { Typography, makeStyles } = require('@material-ui/core');
+const { Typography, makeStyles, Box } = require('@material-ui/core');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,14 +9,14 @@ const useStyles = makeStyles(theme => ({
 const PageTitle = ({ title, subTitle }) => {
   const classes = useStyles();
   return (
-    <div>
+    <Box mb="1.5rem">
       <Typography className={classes.root} variant="h3">
         {title}
       </Typography>
       <Typography className={classes.root} variant="caption">
         {subTitle}
       </Typography>
-    </div>
+    </Box>
   );
 };
 
