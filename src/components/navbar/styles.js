@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     right: 0,
     top: MOBILE_NAV_HEIGHT,
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.background.paper,
     padding: '5px 20px',
     zIndex: theme.zIndex.speedDial,
     boxShadow: theme.shadows[1],
