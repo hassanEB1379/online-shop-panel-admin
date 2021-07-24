@@ -5,9 +5,14 @@ import {
   IconButton,
   CircularProgress,
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+
+// icons
 import { RepeatRounded } from '@material-ui/icons';
 
 const OnFetch = ({ variant, reFetch, ...rest }) => {
+  const { t } = useTranslation();
+
   const handleRefetch = () => reFetch();
 
   return (
@@ -31,7 +36,7 @@ const OnFetch = ({ variant, reFetch, ...rest }) => {
 
         <Grid item>
           <Typography>
-            {variant === 'error' ? 'خطا در برقراری ارتباط' : 'در حال بارگذاری'}
+            {variant === 'error' ? t('fetch.error') : t('fetch.loading')}
           </Typography>
         </Grid>
       </Grid>

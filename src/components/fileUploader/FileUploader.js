@@ -6,6 +6,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // icons
 import { Close } from '@material-ui/icons';
@@ -15,6 +16,8 @@ import useStyles from './styles';
 
 const FileUploader = ({ onUpload, maxSize, ...rest }) => {
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   const [files, setFiles] = useState({});
 
@@ -89,7 +92,7 @@ const FileUploader = ({ onUpload, maxSize, ...rest }) => {
       {Object.keys(files).length ? (
         ImageList
       ) : (
-        <Typography>برای آپلود فایل های جدید بکشید یا کلیک کنید</Typography>
+        <Typography>{t('media.uploadMsg')}</Typography>
       )}
 
       <input

@@ -3,10 +3,7 @@ import { useUploadFile } from 'hooks/MediaHooks';
 import FileUploader from 'components/fileUploader/FileUploader';
 import { useState } from 'react';
 import OnFetch from 'components/onFetch/OnFetch';
-
-// constants
-const BTN_TEXT = 'آپلود فایل جدید';
-const BTN_TEXT_ERROR = 'تلاش مجدد';
+import { useTranslation } from 'react-i18next';
 
 // styles
 const useStyles = makeStyles(theme => ({
@@ -25,6 +22,8 @@ const useStyles = makeStyles(theme => ({
 const AddNewFiles = () => {
   const classes = useStyles();
 
+  const { t } = useTranslation();
+
   const [file, setFile] = useState();
 
   const handleFileUploaderChange = newFiles => setFile(newFiles);
@@ -37,7 +36,7 @@ const AddNewFiles = () => {
     <Paper>
       <Grid container direction="column" spacing={5}>
         <Grid item container>
-          <Typography variant="h4"> آپلود فایل جدید</Typography>
+          <Typography variant="h4"> {t('media.upload')}</Typography>
         </Grid>
 
         <Grid item className={classes.loadingContainer}>
@@ -55,7 +54,7 @@ const AddNewFiles = () => {
             color="primary"
             variant="contained"
           >
-            {isError || isLoading ? BTN_TEXT_ERROR : BTN_TEXT}
+            {isError || isLoading ? t('fetch.reload') : t('media.upload')}
           </Button>
         </Grid>
       </Grid>

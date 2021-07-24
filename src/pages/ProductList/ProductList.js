@@ -1,12 +1,14 @@
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 import OnFetch from 'components/onFetch/OnFetch';
-import PageTitle from 'components/pageTitle/PageTitle';
 import Table from 'components/table/Table';
 import { useDeleteProducts } from 'hooks/ProductHooks';
 import { useAllProducts } from 'hooks/ProductHooks';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ProductList = () => {
+  const { t } = useTranslation();
+
   const { data, isError, isLoading, refetch, isSuccess } = useAllProducts();
 
   const { mutate: deleteProducts } = useDeleteProducts();
@@ -16,15 +18,15 @@ const ProductList = () => {
   const columns = useMemo(
     () => [
       {
-        Header: 'شناسه',
+        Header: t('product.id'),
         accessor: 'id',
       },
       {
-        Header: 'عنوان',
+        Header: t('product.title'),
         accessor: 'title',
       },
       {
-        Header: 'تصویر',
+        Header: t('product.picture'),
         accessor: 'image',
         Cell: ({ cell: { value } }) => (
           <img
@@ -37,50 +39,38 @@ const ProductList = () => {
         ),
       },
       {
-        Header: 'قیمت',
+        Header: t('product.price'),
         accessor: 'price',
       },
       {
-        Header: 'قیمت با تخفیف',
+        Header: t('product.discount'),
         accessor: 'priceWithDiscount',
       },
       {
-        Header: 'دسته بندی',
+        Header: t('product.category'),
         accessor: 'category',
       },
     ],
-    []
+    [t]
   );
 
   return (
-    <Grid container direction="column" spacing={4}>
-      <Grid item xs={12}>
-        <PageTitle title="لیست محصولات" subTitle="مدیریت محصولات" />
-      </Grid>
+    <Paper>
+      {isLoading && <OnFetch variant="loading" />}
 
-      <Grid item xs={12}>
-        <Paper>
-          <Grid container>
-            <Grid item xs>
-              {isLoading && <OnFetch variant="loading" />}
+      {isError && <OnFetch variant="error" reFetch={refetch} />}
 
-              {isError && <OnFetch variant="error" reFetch={refetch} />}
-
-              {isSuccess &&
-                (data.length ? (
-                  <Table
-                    columns={columns}
-                    data={tableData}
-                    deleteHandler={deleteProducts}
-                  />
-                ) : (
-                  <Typography>محصولی وجود ندارد</Typography>
-                ))}
-            </Grid>
-          </Grid>
-        </Paper>
-      </Grid>
-    </Grid>
+      {isSuccess &&
+        (data.length ? (
+          <Table
+            columns={columns}
+            data={tableData}
+            deleteHandler={deleteProducts}
+          />
+        ) : (
+          <Typography>{t('product.noProduct')}</Typography>
+        ))}
+    </Paper>
   );
 };
 

@@ -4,8 +4,11 @@ import Table from 'components/table/Table';
 import { useDeleteFiles } from 'hooks/MediaHooks';
 import { useAllMedia } from 'hooks/MediaHooks';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const FileList = () => {
+  const { t } = useTranslation();
+
   const { isLoading, isError, isSuccess, data, refetch } = useAllMedia();
 
   const { mutate: deleteFiles } = useDeleteFiles();
@@ -15,11 +18,11 @@ const FileList = () => {
   const columns = useMemo(
     () => [
       {
-        Header: 'شناسه',
+        Header: t('media.id'),
         accessor: 'id',
       },
       {
-        Header: 'تصویر',
+        Header: t('media.picture'),
         accessor: 'thumbnail',
         Cell: ({ cell: { value } }) => (
           <img
@@ -32,22 +35,22 @@ const FileList = () => {
         ),
       },
       {
-        Header: 'نام فایل',
+        Header: t('media.name'),
         accessor: 'name',
       },
       {
-        Header: 'آدرس',
+        Header: t('media.url'),
         accessor: 'url',
       },
     ],
-    []
+    [t]
   );
 
   return (
     <Paper>
       <Grid container direction="column" spacing={5}>
         <Grid item>
-          <Typography variant="h4">فایل های آپلود شده</Typography>
+          <Typography variant="h4">{t('media.list')}</Typography>
         </Grid>
 
         <Grid item xs={12}>
@@ -63,7 +66,7 @@ const FileList = () => {
                 deleteHandler={deleteFiles}
               />
             ) : (
-              <Typography>رسانه ای وجود ندارد</Typography>
+              <Typography>{t('media.noFile')}</Typography>
             ))}
         </Grid>
       </Grid>

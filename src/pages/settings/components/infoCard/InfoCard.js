@@ -7,10 +7,15 @@ import {
   Typography,
   Divider,
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
+
+// styles
 import useStyles from './styles';
 
 const InfoCard = () => {
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   return (
     <Box padding="0 2rem">
@@ -19,31 +24,31 @@ const InfoCard = () => {
         <Box marginTop="1.5rem">
           <List>
             <ListItem>
-              <Typography>نام کاربری :</Typography>
+              <Typography>{t('info.userName')}</Typography>
             </ListItem>
 
             <Divider />
 
             <ListItem>
-              <Typography>ایمیل :</Typography>
+              <Typography>{t('info.email')}</Typography>
             </ListItem>
 
             <Divider />
 
             <ListItem>
-              <Typography>شماره موبایل :</Typography>
+              <Typography>{t('info.phone')}</Typography>
             </ListItem>
 
             <Divider />
 
             <ListItem>
-              <Typography>نقش :</Typography>
+              <Typography>{t('info.role')}</Typography>
             </ListItem>
 
             <Divider />
 
             <ListItem>
-              <Typography>رمز عبور :</Typography>
+              <Typography>{t('info.password')}</Typography>
             </ListItem>
           </List>
         </Box>

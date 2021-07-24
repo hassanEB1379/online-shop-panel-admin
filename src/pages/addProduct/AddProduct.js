@@ -1,11 +1,11 @@
 import { Box, Button, Grid, Paper, Typography } from '@material-ui/core';
 import Input from 'components/customInputs/CustomInput';
 import Select from 'components/customInputs/CustomSelect';
-import PageTitle from 'components/pageTitle/PageTitle';
 import SelectFiles from 'components/selectFiles/SelectFiles';
 import { useFormik } from 'formik';
 import { useAddProduct } from 'hooks/ProductHooks';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ProductSchema as validationSchema } from 'utils/validations/schema';
 
 const sampleOptionsCategory = [
@@ -28,6 +28,8 @@ const sampleOptionsCategory = [
 ];
 
 const AddProduct = () => {
+  const { t } = useTranslation();
+
   const { mutate: add, isSuccess, isError } = useAddProduct();
 
   const [productImage, setProductImage] = useState('');
@@ -57,87 +59,74 @@ const AddProduct = () => {
   }, [handleReset, isSuccess]);
 
   return (
-    <Grid container direction="column" spacing={4}>
-      <Grid item xs={12}>
-        <PageTitle title="افزودن محصول" subTitle="مدیریت محصولات" />
-      </Grid>
+    <Paper>
+      <Grid container spacing={6}>
+        <Grid item xs={12} md={8}>
+          <form onSubmit={handleSubmit}>
+            <Box paddingBottom="1rem">
+              <Button type="submit" variant="contained" color="primary">
+                {isError ? t('fetch.reload') : t('product.add')}
+              </Button>
+            </Box>
 
-      <Grid item xs={12}>
-        <Paper>
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={8}>
-              <form onSubmit={handleSubmit}>
-                <Box paddingBottom="1rem">
-                  <Button type="submit" variant="contained" color="primary">
-                    {isError ? 'تلاش مجدد' : 'افزودن محصول'}
-                  </Button>
-                </Box>
+            <Input
+              id="product-title"
+              label={t('product.title')}
+              name="title"
+              error={touched.title && errors.title}
+              {...getFieldProps('title')}
+            />
 
+            <Input
+              id="product-description"
+              label={t('product.desc')}
+              multiline
+              rows="9"
+              name="description"
+              error={touched.description && errors.description}
+              {...getFieldProps('description')}
+            />
+
+            <Grid container spacing={2}>
+              <Grid item xs>
                 <Input
-                  id="product-title"
-                  label="عنوان"
-                  placeholder="عنوان محصول"
-                  name="title"
-                  error={touched.title && errors.title}
-                  {...getFieldProps('title')}
+                  id="product-price"
+                  label={t('product.price')}
+                  name="price"
+                  error={touched.price && errors.price}
+                  {...getFieldProps('price')}
                 />
+              </Grid>
 
+              <Grid item xs>
                 <Input
-                  id="product-description"
-                  label="توضیحات محصول"
-                  multiline
-                  rows="9"
-                  name="description"
-                  error={touched.description && errors.description}
-                  {...getFieldProps('description')}
+                  id="product-price-discount"
+                  label={t('product.discount')}
+                  name="priceWithDiscount"
+                  error={touched.priceWithDiscount && errors.priceWithDiscount}
+                  {...getFieldProps('priceWithDiscount')}
                 />
-
-                <Grid container spacing={2}>
-                  <Grid item xs>
-                    <Input
-                      id="product-price"
-                      label="قیمت"
-                      placeholder="قیمت"
-                      name="price"
-                      error={touched.price && errors.price}
-                      {...getFieldProps('price')}
-                    />
-                  </Grid>
-
-                  <Grid item xs>
-                    <Input
-                      id="product-price-discount"
-                      label="قیمت با تخفیف"
-                      placeholder=" قیمت "
-                      name="priceWithDiscount"
-                      error={
-                        touched.priceWithDiscount && errors.priceWithDiscount
-                      }
-                      {...getFieldProps('priceWithDiscount')}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Select
-                  id="product-category"
-                  label="دسته بندی"
-                  name="category"
-                  options={sampleOptionsCategory}
-                  error={touched.category && errors.category}
-                  {...getFieldProps('category')}
-                />
-              </form>
+              </Grid>
             </Grid>
 
-            <Grid item xs={12} md={4}>
-              <Typography variant="h6">افزودن تصویر</Typography>
+            <Select
+              id="product-category"
+              label={t('product.category')}
+              name="category"
+              options={sampleOptionsCategory}
+              error={touched.category && errors.category}
+              {...getFieldProps('category')}
+            />
+          </form>
+        </Grid>
 
-              <SelectFiles onSelect={setProductImage} />
-            </Grid>
-          </Grid>
-        </Paper>
+        <Grid item xs={12} md={4}>
+          <Typography variant="h6">{t('product.addImg')}</Typography>
+
+          <SelectFiles onSelect={setProductImage} />
+        </Grid>
       </Grid>
-    </Grid>
+    </Paper>
   );
 };
 

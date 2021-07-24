@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import { useAllMedia } from 'hooks/MediaHooks';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Preview from './components/Preview';
 
 // styles
@@ -16,6 +17,8 @@ import useStyles from './styles';
 
 const SelectFiles = ({ onSelect }) => {
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   const { data: files } = useAllMedia();
 
@@ -61,7 +64,7 @@ const SelectFiles = ({ onSelect }) => {
       <Grid container direction="column-reverse" spacing={2}>
         <Grid item>
           <Button onClick={handleModalOpen} color="primary" variant="contained">
-            افزودن +
+            {t('addImgBtn')}
           </Button>
         </Grid>
 
@@ -87,7 +90,7 @@ const SelectFiles = ({ onSelect }) => {
                 wrap="nowrap"
               >
                 <Grid item>
-                  <Typography variant="h4">انتخاب فایل</Typography>
+                  <Typography variant="h4">{t('selectFile')}</Typography>
                 </Grid>
 
                 <Grid item className={classes.gridListContainer}>
@@ -113,7 +116,7 @@ const SelectFiles = ({ onSelect }) => {
                     variant="contained"
                     color="primary"
                   >
-                    انتخاب
+                    {t('selectFile')}
                   </Button>
                 </Grid>
               </Grid>

@@ -14,9 +14,12 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 // styles
 import useStyles from './styles';
+import { useTranslation } from 'react-i18next';
 
 const SidebarLink = ({ item }) => {
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   const { path, name, children, icon: Icon } = item;
 
@@ -32,7 +35,7 @@ const SidebarLink = ({ item }) => {
         primaryTypographyProps={{
           classes: { body1: classes.text },
         }}
-        primary={name}
+        primary={t(name)}
       />
 
       {children && (open ? <ExpandLess /> : <ExpandMore />)}
@@ -58,7 +61,7 @@ const SidebarLink = ({ item }) => {
                     primaryTypographyProps={{
                       classes: { body1: classes.text },
                     }}
-                    primary={childItem.name}
+                    primary={t(childItem.name)}
                   />
                 </ListItem>
               </Link>
