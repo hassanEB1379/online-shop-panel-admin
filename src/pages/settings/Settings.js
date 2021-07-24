@@ -1,8 +1,8 @@
 import { Grid, Paper, Tabs, Tab } from '@material-ui/core';
-import PageTitle from 'components/pageTitle/PageTitle';
 import { useState } from 'react';
 import InfoCard from './components/infoCard/InfoCard';
-import ThemeSettings from './components/themeSettings/ThemeSettings';
+import AppSettings from './components/appSettings/AppSettings';
+import { useTranslation } from 'react-i18next';
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props;
@@ -15,6 +15,8 @@ const TabPanel = props => {
 };
 
 const Settings = () => {
+  const { t } = useTranslation();
+
   const [openTab, setOpenTab] = useState(0);
 
   const handleChange = (_, newTab) => {
@@ -22,27 +24,21 @@ const Settings = () => {
   };
 
   return (
-    <Grid container direction="column" spacing={4}>
-      <Grid item>
-        <PageTitle title="تنظیمات" subTitle="مدیریت پنل" />
+    <Grid container style={{ marginTop: '6rem' }}>
+      <Grid item xs={4}>
+        <InfoCard />
       </Grid>
 
-      <Grid item container style={{ marginTop: '3rem' }}>
-        <Grid item xs={4}>
-          <InfoCard />
-        </Grid>
+      <Grid item xs={8}>
+        <Paper>
+          <Tabs value={openTab} onChange={handleChange}>
+            <Tab label={t('setting.public')} />
+          </Tabs>
 
-        <Grid item xs={8}>
-          <Paper>
-            <Tabs value={openTab} onChange={handleChange}>
-              <Tab label="تنظیمات تم" />
-            </Tabs>
-
-            <TabPanel value={openTab} index={0}>
-              <ThemeSettings />
-            </TabPanel>
-          </Paper>
-        </Grid>
+          <TabPanel value={openTab} index={0}>
+            <AppSettings />
+          </TabPanel>
+        </Paper>
       </Grid>
     </Grid>
   );
