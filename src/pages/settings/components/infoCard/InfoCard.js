@@ -18,7 +18,7 @@ const InfoCard = () => {
   const { t } = useTranslation();
 
   return (
-    <Box padding="0 2rem">
+    <Box className={classes.container}>
       <Paper>
         <Avatar className={classes.avatar} />
         <Box marginTop="1.5rem">
