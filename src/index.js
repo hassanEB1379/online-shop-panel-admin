@@ -6,7 +6,7 @@ import { ThemeProvider } from 'contexts/ThemeContext';
 import { RTL } from 'theme';
 
 // translation
-import 'config/i18n';
+import 'configs/i18n';
 
 ReactDOM.render(
   <React.StrictMode>
