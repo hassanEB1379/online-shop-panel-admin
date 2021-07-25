@@ -1,30 +1,27 @@
 export const typography = {
-  fontFamily: 'Vazir',
+  fontFamily: '"Open Sans", Vazir , sans-serif',
   h1: {
-    fontSize: 36,
-    fontWeight: 700,
+    fontSize: '3rem',
+    fontWeight: 600,
   },
   h2: {
-    fontSize: 32,
-    fontWeight: 700,
+    fontSize: '2.5rem',
+    fontWeight: 600,
   },
   h3: {
-    fontSize: 28,
-    fontWeight: 700,
+    fontSize: '2rem',
+    fontWeight: 600,
   },
   h4: {
-    fontSize: 24,
-    fontWeight: 700,
+    fontSize: '1.75rem',
+    fontWeight: 600,
   },
   h5: {
-    fontSize: 20,
-    fontWeight: 700,
+    fontSize: '1.5rem',
+    fontWeight: 600,
   },
   h6: {
-    fontSize: 18,
-    fontWeight: 700,
-  },
-  caption: {
-    fontSize: 14,
+    fontSize: '1.25rem',
+    fontWeight: 600,
   },
 };
