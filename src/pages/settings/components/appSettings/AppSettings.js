@@ -28,7 +28,7 @@ const AppSettings = () => {
 
   return (
     <Box p="2rem 0">
-      <Typography variant="h6">{t('setting.changeTheme')}</Typography>
+      <Typography>{t('setting.changeTheme')}</Typography>
 
       <Box pt="1rem" display="flex" onChange={switchTheme}>
         <StyledRatio
@@ -48,12 +48,18 @@ const AppSettings = () => {
       </Box>
 
       <Box mt="1rem">
-        <Typography variant="h6">{t('setting.changeLang')}</Typography>
+        <Typography>{t('setting.changeLang')}</Typography>
       </Box>
 
       <Box pt="1rem" display="flex" onChange={switchLang}>
-        <StyledRatio value="fa" name="lang" flag="/static/images/iran.png" />
         <StyledRatio
+          checked={i18n.language === 'fa'}
+          value="fa"
+          name="lang"
+          flag="/static/images/iran.png"
+        />
+        <StyledRatio
+          checked={i18n.language === 'en'}
           value="en"
           name="lang"
           flag="/static/images/united-kingdom.png"
