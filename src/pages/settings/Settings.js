@@ -24,12 +24,12 @@ const Settings = () => {
   };
 
   return (
-    <Grid container style={{ marginTop: '6rem' }}>
-      <Grid item xs={4}>
+    <Grid container spacing={4} style={{ marginTop: '6rem' }}>
+      <Grid item xs={12} md={4}>
         <InfoCard />
       </Grid>
 
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <Paper>
           <Tabs value={openTab} onChange={handleChange}>
             <Tab label={t('setting.public')} />
