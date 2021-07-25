@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     cursor: 'pointer',
     '&::after': {
       content: ' url("/static/images/checked.svg")',
-      backgroundColor: theme.palette.success.main,
+      backgroundColor: theme.palette.success.dark,
       borderRadius: '50%',
       height: 16,
       width: 16,
