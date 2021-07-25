@@ -38,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
   }, [themeInfo]);
 
   useEffect(() => {
-    document.body.dir = themeInfo.direction;
+    document.documentElement.dir = themeInfo.direction;
   }, [themeInfo.direction]);
 
   return (
