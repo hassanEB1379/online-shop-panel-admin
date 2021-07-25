@@ -3,6 +3,7 @@ export const overrides = {
     root: {
       borderRadius: '4rem',
       padding: '.5rem 1.5rem',
+      textTransform: 'none',
     },
   },
   MuiPaper: {
