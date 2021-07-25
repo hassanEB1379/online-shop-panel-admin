@@ -7,11 +7,13 @@ import {
   FormControlLabel,
   FormGroup,
   Button,
+  Box,
 } from '@material-ui/core';
 
 //icons
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Google from 'icons/Google';
+import { useTranslation } from 'react-i18next';
 
 //style
 import useStyles from './styles';
@@ -19,54 +21,58 @@ import useStyles from './styles';
 const Login = () => {
   const classes = useStyles();
 
+  const { t } = useTranslation();
+
   return (
     <Paper elevation={2} className={classes.paper}>
       <Grid container direction="column" spacing={4}>
         <Grid item>
           <span className={classes.title}>
             <PermIdentityIcon fontSize="large" />
-            <Typography variant="h4">ورود</Typography>
+            <Typography variant="h4">{t('login.header')}</Typography>
           </span>
         </Grid>
 
         <Grid item>
           <form>
-            <div className="form-group">
-              <TextField fullWidth variant="outlined" label="نام کاربری" />
-            </div>
+            <Box mb="1.5rem">
+              <TextField
+                fullWidth
+                variant="outlined"
+                label={t('info.userName')}
+              />
+            </Box>
 
-            <div className="form-group">
+            <Box mb="1.5rem">
               <TextField
                 fullWidth
                 type="password"
                 variant="outlined"
-                label="رمز عبور"
+                label={t('info.password')}
               />
-            </div>
+            </Box>
 
-            <div className="form-group">
+            <Box mb="1.5rem">
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox name="rememberMe" />}
-                  label="مرا به خاطر بسپار"
+                  control={<Checkbox color="primary" name="rememberMe" />}
+                  label={t('login.remember')}
                 />
               </FormGroup>
-            </div>
+            </Box>
 
-            <div>
-              <Button variant="contained" color="primary">
-                ورود به پنل
-              </Button>
+            <Button variant="contained" color="primary">
+              {t('login.loginBtn')}
+            </Button>
 
-              <Button
-                style={{ marginRight: '.5rem' }}
-                endIcon={<Google />}
-                variant="contained"
-                color="primary"
-              >
-                ورود با اکانت گوگل
-              </Button>
-            </div>
+            <Button
+              className={classes.margin}
+              endIcon={<Google />}
+              variant="contained"
+              color="primary"
+            >
+              {t('login.google')}
+            </Button>
           </form>
         </Grid>
       </Grid>

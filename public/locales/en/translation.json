@@ -41,6 +41,12 @@
     "role": "Role",
     "password": "Password"
   },
+  "login": {
+    "header": "Login",
+    "google": "Login with google",
+    "loginBtn": "Login",
+    "remember": "Remember me"
+  },
   "fetch": {
     "reload": "Retry",
     "error": "Communication error",
