@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
   socialBtn: {
     border: '1px solid',
   },
+  margin: {
+    marginLeft: theme.spacing(1),
+  },
 }));
 
 export default useStyles;
