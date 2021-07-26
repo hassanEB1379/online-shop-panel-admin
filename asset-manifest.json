@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/online-shop-panel-admin/static/css/main.35d6d68a.chunk.css",
+    "main.js": "/online-shop-panel-admin/static/js/main.22d812bd.chunk.js",
+    "main.js.map": "/online-shop-panel-admin/static/js/main.22d812bd.chunk.js.map",
+    "runtime-main.js": "/online-shop-panel-admin/static/js/runtime-main.b699ee66.js",
+    "runtime-main.js.map": "/online-shop-panel-admin/static/js/runtime-main.b699ee66.js.map",
+    "static/js/2.5cb38fe3.chunk.js": "/online-shop-panel-admin/static/js/2.5cb38fe3.chunk.js",
+    "static/js/2.5cb38fe3.chunk.js.map": "/online-shop-panel-admin/static/js/2.5cb38fe3.chunk.js.map",
+    "index.html": "/online-shop-panel-admin/index.html",
+    "static/css/main.35d6d68a.chunk.css.map": "/online-shop-panel-admin/static/css/main.35d6d68a.chunk.css.map",
+    "static/js/2.5cb38fe3.chunk.js.LICENSE.txt": "/online-shop-panel-admin/static/js/2.5cb38fe3.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/online-shop-panel-admin/static/media/Vazir-Thin-FD.ddc0441e.woff",
+    "static/media/getFetch.cjs": "/online-shop-panel-admin/static/media/getFetch.582d29c4.cjs"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b699ee66.js",
+    "static/js/2.5cb38fe3.chunk.js",
+    "static/css/main.35d6d68a.chunk.css",
+    "static/js/main.22d812bd.chunk.js"
+  ]
+}
