@@ -17,19 +17,10 @@ export const ThemeProvider = ({ children }) => {
   );
 
   const theme = createMuiTheme({
-    direction: themeInfo.direction,
     typography,
     overrides,
     shadows,
-    palette: {
-      type: themeInfo.themeName,
-      primary: {
-        light: '#ff999c',
-        main: '#ff8084',
-        dark: '#e76166',
-        contrastText: '#fff',
-      },
-    },
+    ...themeInfo,
   });
 
   // save new theme to localStorage
