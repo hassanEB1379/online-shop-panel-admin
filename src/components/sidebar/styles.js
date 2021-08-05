@@ -13,12 +13,16 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: DRAWER_WIDTH,
     zIndex: theme.zIndex.speedDial,
+    backgroundColor: theme.palette.background.sidebar,
   },
   profileImg: {
     height: '80px',
     width: '80px',
     margin: '0px auto',
     boxShadow: theme.shadows[5],
+  },
+  text: {
+    color: theme.palette.text.sidebar,
   },
 }));
 
