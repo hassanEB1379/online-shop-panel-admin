@@ -1,4 +1,7 @@
+import { palettes } from 'theme';
+
 const initialTheme = {
+  palette: palettes['light'],
   themeName: 'light',
   direction: 'rtl',
 };
@@ -22,7 +25,8 @@ const themeReducer = (state, action) => {
     case 'changeTheme': {
       return {
         ...state,
-        themeName: action.payload,
+        palette: action.payload.palette,
+        themeName: action.payload.themeName,
       };
     }
     default:
@@ -36,7 +40,9 @@ const changeDir = dir => {
 };
 
 const changeTheme = themeName => {
-  return { type: 'changeTheme', payload: themeName };
+  const palette = palettes[themeName];
+
+  return { type: 'changeTheme', payload: { palette, themeName } };
 };
 
 export { initialTheme, initFunc, themeReducer, changeDir, changeTheme };
