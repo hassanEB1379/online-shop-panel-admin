@@ -72,7 +72,7 @@ const Navbar = ({ className, switchSidebar }) => {
           >
             <Grid item>
               <IconButton onClick={switchSidebar}>
-                <MenuIcon />
+                <MenuIcon color="primary" />
               </IconButton>
             </Grid>
 
