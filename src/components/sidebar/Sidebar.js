@@ -29,7 +29,6 @@ const Sidebar = ({ open }) => {
       classes={{ paper: classes.paper }}
     >
       <div className={classes.drawerHeader}></div>
-      <Divider />
       {/* list-profile */}
       <Box padding="15px">
         <Grid container direction="column" spacing={2}>
@@ -38,13 +37,15 @@ const Sidebar = ({ open }) => {
           </Grid>
 
           <Grid item>
-            <Typography variant="h5" align="center">
+            <Typography className={classes.text} variant="h5" align="center">
               اسم ادمین
             </Typography>
           </Grid>
 
           <Grid item>
-            <Typography align="center">{t('welcome')}</Typography>
+            <Typography className={classes.text} align="center">
+              {t('welcome')}
+            </Typography>
           </Grid>
         </Grid>
       </Box>
