@@ -9,11 +9,11 @@ import {
   Button,
   Box,
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 //icons
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import Google from 'icons/Google';
-import { useTranslation } from 'react-i18next';
+import Google from 'components/icons/Google';
 
 //style
 import useStyles from './styles';
