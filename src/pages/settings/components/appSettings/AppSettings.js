@@ -1,12 +1,15 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { Brightness2, WbSunny } from '@material-ui/icons';
 import { useThemeInfoDispatch, useThemeInfo } from 'contexts/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import { changeDir, changeTheme } from 'reducers/ThemeReducer';
-import StyledRatio from './components/StyledRatio';
+import StyledRadio from './components/StyledRadio';
 
 // styles
 import useStyles from './styles';
+
+// palettes
+import { blue, purple, red } from '@material-ui/core/colors';
 
 const AppSettings = () => {
   const classes = useStyles();
@@ -28,43 +31,69 @@ const AppSettings = () => {
 
   return (
     <Box p="2rem 0">
-      <Typography>{t('setting.changeTheme')}</Typography>
+      <Grid container direction="column" spacing={2}>
+        <Grid item>
+          <Typography>{t('setting.changeTheme')}</Typography>
+        </Grid>
 
-      <Box pt="1rem" display="flex" onChange={switchTheme}>
-        <StyledRatio
-          checked={themeName === 'light'}
-          value="light"
-          name="theme"
-          className={classes.light}
-          icon={<WbSunny htmlColor="#ffca0a" />}
-        />
-        <StyledRatio
-          checked={themeName === 'dark'}
-          value="dark"
-          name="theme"
-          className={classes.dark}
-          icon={<Brightness2 htmlColor="#fff" />}
-        />
-      </Box>
+        <Grid item container onChange={switchTheme}>
+          <StyledRadio
+            defaultChecked={themeName === 'light'}
+            value="light"
+            name="theme"
+            className={classes.light}
+            icon={<WbSunny htmlColor="#ffca0a" />}
+          />
 
-      <Box mt="1rem">
-        <Typography>{t('setting.changeLang')}</Typography>
-      </Box>
+          <StyledRadio
+            defaultChecked={themeName === 'dark'}
+            value="dark"
+            name="theme"
+            className={classes.dark}
+            icon={<Brightness2 htmlColor="#fff" />}
+          />
 
-      <Box pt="1rem" display="flex" onChange={switchLang}>
-        <StyledRatio
-          checked={i18n.language === 'fa'}
-          value="fa"
-          name="lang"
-          flag="/static/images/iran.png"
-        />
-        <StyledRatio
-          checked={i18n.language === 'en'}
-          value="en"
-          name="lang"
-          flag="/static/images/united-kingdom.png"
-        />
-      </Box>
+          <StyledRadio
+            defaultChecked={themeName === 'blue'}
+            value="blue"
+            name="theme"
+            palette={blue}
+          />
+
+          <StyledRadio
+            defaultChecked={themeName === 'red'}
+            value="red"
+            name="theme"
+            palette={red}
+          />
+
+          <StyledRadio
+            defaultChecked={themeName === 'purple'}
+            value="purple"
+            name="theme"
+            palette={purple}
+          />
+        </Grid>
+
+        <Grid item>
+          <Typography>{t('setting.changeLang')}</Typography>
+        </Grid>
+
+        <Grid item container onChange={switchLang}>
+          <StyledRadio
+            defaultChecked={i18n.language === 'fa'}
+            value="fa"
+            name="lang"
+            flag="/static/images/iran.png"
+          />
+          <StyledRadio
+            defaultChecked={i18n.language === 'en'}
+            value="en"
+            name="lang"
+            flag="/static/images/united-kingdom.png"
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
