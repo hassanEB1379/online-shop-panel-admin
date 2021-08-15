@@ -1,3 +1,11 @@
+import { useTranslation } from 'react-i18next';
+import { useFormik } from 'formik';
+import { LoginSchema as validationSchema } from 'utils/validations/schema';
+import { useUserDispatch } from 'contexts/UserContext';
+import { loginSuccess } from 'reducers/UserReducer';
+import { useHistory } from 'react-router-dom';
+
+// material components
 import {
   Grid,
   Paper,
@@ -9,7 +17,6 @@ import {
   Button,
   Box,
 } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
 
 //icons
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
@@ -23,6 +30,23 @@ const Login = () => {
 
   const { t } = useTranslation();
 
+  const dispatch = useUserDispatch();
+
+  const history = useHistory();
+
+  // handle login form
+  const { handleSubmit, getFieldProps, touched, errors } = useFormik({
+    initialValues: {
+      userName: '',
+      password: '',
+    },
+    validationSchema,
+    onSubmit: values => {
+      dispatch(loginSuccess(values));
+      return history.push('/panel');
+    },
+  });
+
   return (
     <Paper elevation={2} className={classes.paper}>
       <Grid container direction="column" spacing={4}>
@@ -34,12 +58,15 @@ const Login = () => {
         </Grid>
 
         <Grid item>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Box mb="1.5rem">
               <TextField
                 fullWidth
                 variant="outlined"
                 label={t('info.userName')}
+                error={Boolean(touched.userName && errors.userName)}
+                helperText={touched.userName && errors.userName}
+                {...getFieldProps('userName')}
               />
             </Box>
 
@@ -49,6 +76,9 @@ const Login = () => {
                 type="password"
                 variant="outlined"
                 label={t('info.password')}
+                error={Boolean(touched.password && errors.password)}
+                helperText={touched.password && errors.password}
+                {...getFieldProps('password')}
               />
             </Box>
 
@@ -61,7 +91,7 @@ const Login = () => {
               </FormGroup>
             </Box>
 
-            <Button variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary">
               {t('login.loginBtn')}
             </Button>
 
