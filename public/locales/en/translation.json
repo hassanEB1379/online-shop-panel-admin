@@ -32,7 +32,8 @@
   "setting": {
     "public": "Public changes",
     "changeTheme": "Change theme",
-    "changeLang": "Change language"
+    "changeLang": "Change language",
+    "logout": "Logout"
   },
   "info": {
     "userName": "User name",

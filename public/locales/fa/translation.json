@@ -32,7 +32,8 @@
   "setting": {
     "public": "تنظیمات کلی",
     "changeTheme": "تغییر تم",
-    "changeLang": "تغییر زبان"
+    "changeLang": "تغییر زبان",
+    "logout": "خروج از برنامه"
   },
   "info": {
     "userName": "نام کاربری",
