@@ -7,12 +7,15 @@ import { RTL } from 'theme';
 
 // translation
 import 'configs/i18n';
+import { UserProvider } from 'contexts/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <RTL>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </RTL>
     </ThemeProvider>
   </React.StrictMode>,
