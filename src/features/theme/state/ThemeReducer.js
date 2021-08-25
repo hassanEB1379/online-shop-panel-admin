@@ -1,4 +1,4 @@
-import { palettes } from 'theme';
+import { palettes } from 'features/theme/utils';
 
 const initialTheme = {
   palette: palettes['light'],

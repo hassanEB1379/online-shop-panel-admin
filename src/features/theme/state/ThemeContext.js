@@ -1,7 +1,11 @@
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { useEffect, useReducer, useContext, createContext } from 'react';
-import { themeReducer, initialTheme, initFunc } from 'reducers/ThemeReducer';
-import { typography, overrides, shadows } from 'theme';
+import {
+  themeReducer,
+  initialTheme,
+  initFunc,
+} from 'features/theme/state/ThemeReducer';
+import { typography, overrides, shadows, RTL } from 'features/theme/utils';
 
 const themeInfoContext = createContext();
 const themeInfoDispatchContext = createContext();
@@ -23,7 +27,7 @@ export const ThemeProvider = ({ children }) => {
     ...themeInfo,
   });
 
-  // save new theme to localStorage
+  // save new utils to localStorage
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(themeInfo));
   }, [themeInfo]);
@@ -35,7 +39,9 @@ export const ThemeProvider = ({ children }) => {
   return (
     <themeInfoContext.Provider value={themeInfo}>
       <themeInfoDispatchContext.Provider value={dispatch}>
-        <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+        <MuiThemeProvider theme={theme}>
+          <RTL>{children}</RTL>
+        </MuiThemeProvider>
       </themeInfoDispatchContext.Provider>
     </themeInfoContext.Provider>
   );
