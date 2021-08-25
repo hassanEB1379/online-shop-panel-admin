@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'assets/css/index.css';
-import App from './App';
-import { ThemeProvider } from 'contexts/ThemeContext';
-import { RTL } from 'theme';
+import 'app/assets/css/index.css';
+import App from './app/App';
+import Providers from './app/Providers';
 
 // translation
-import 'configs/i18n';
-import { UserProvider } from 'contexts/UserContext';
+import 'app/configs/i18n';
+
+// chart js defaults
+import { defaults } from 'react-chartjs-2';
+
+defaults.font.family = '"Open Sans", Vazir , sans-serif';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <RTL>
-        <UserProvider>
-          <App />
-        </UserProvider>
-      </RTL>
-    </ThemeProvider>
+    <React.Suspense fallback={null}>
+      <Providers>
+        <App />
+      </Providers>
+    </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
