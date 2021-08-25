@@ -2,4 +2,4 @@
 
 1 - npm start 
 
-2 - npm run mockServer
+2 - npm run server
