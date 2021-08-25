@@ -33,6 +33,7 @@
     "public": "Public changes",
     "changeTheme": "Change theme",
     "changeLang": "Change language",
+    "editInfo" : "Edit info",
     "logout": "Logout"
   },
   "info": {
@@ -40,7 +41,8 @@
     "email": "Email",
     "phone": "Phone number",
     "role": "Role",
-    "password": "Password"
+    "password": "Password",
+    "empty" : "Not yet entered"
   },
   "login": {
     "header": "Login",
@@ -53,8 +55,12 @@
     "error": "Communication error",
     "loading": "Loading"
   },
+  "errors" : {
+    "required" : "This field is required"
+  },
   "search": "search...",
   "welcome": "Welcome",
   "addImgBtn": "Add +",
-  "selectFile": "Select File"
+  "selectFile": "Select File",
+  "editBtn" : "Edit"
 }
