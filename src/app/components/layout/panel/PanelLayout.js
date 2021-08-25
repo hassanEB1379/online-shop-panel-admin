@@ -1,10 +1,11 @@
 import { Grid } from '@material-ui/core';
 import { useState } from 'react';
-import Navbar from 'components/navbar/Navbar';
+import Navbar from 'app/components/block/navbar/Navbar';
 import { Switch, Redirect } from 'react-router-dom';
-import Sidebar from 'components/sidebar/Sidebar';
-import { useRoutes, useRouteName } from 'hooks/RoutesHooks';
-import PageTitle from 'components/pageTitle/PageTitle';
+import Sidebar from 'app/components/block/sidebar/Sidebar';
+import { useRoutes, useRouteName } from 'app/hooks/RoutesHooks';
+import PageTitle from 'app/components/micro/pageTitle/PageTitle';
+import Footer from 'app/components/block/Footer';
 
 // styles
 import useStyles from './styles';
@@ -20,22 +21,28 @@ const PanelLayout = ({ location }) => {
 
   return (
     <Grid container wrap="nowrap" className={classes.container}>
+      {/* navbar */}
       <Navbar
         className={classes.navbarShift}
         switchSidebar={() => setSidebarOpen(!sidebarOpen)}
       />
 
+      {/* sidebar */}
       <Sidebar open={sidebarOpen} />
 
       <Grid item className={classes.contentWrapper}>
         <PageTitle title={routeName} />
 
+        {/* dynamic content */}
         <Switch>
           {routes}
 
           {/* Redirects */}
           <Redirect from="/panel" to="/panel/dashboard" />
         </Switch>
+
+        {/* footer */}
+        <Footer />
       </Grid>
     </Grid>
   );
